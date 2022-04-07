@@ -1,4 +1,3 @@
-
 package com.backEndApp.PortfoliobackEnd.model;
 
 import javax.persistence.Entity;
@@ -9,7 +8,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.repository.EntityGraph;
 
-@Getter @Setter
+@Getter 
+@Setter
 @Entity
 public class Persona {
     @Id
