@@ -25,7 +25,9 @@ public class Experiencia {
     public Experiencia(){   
      }
     public Experiencia(Long id,
-            String puesto,String descripcion,String empresa, 
+            String puesto,
+            String descripcion,
+            String empresa, 
             String logoEmpresa,
             String fechaInicio,
             String fechaFin){

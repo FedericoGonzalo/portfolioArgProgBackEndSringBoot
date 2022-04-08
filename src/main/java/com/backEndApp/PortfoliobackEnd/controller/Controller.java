@@ -1,7 +1,9 @@
 
 package com.backEndApp.PortfoliobackEnd.controller;
 
+import com.backEndApp.PortfoliobackEnd.model.Experiencia;
 import com.backEndApp.PortfoliobackEnd.model.Persona;
+import com.backEndApp.PortfoliobackEnd.service.IExperienciaService;
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,17 @@ public class Controller {
      public Persona buscarPersona(@PathVariable Long id){
       return persoServ.buscarPersona(id);
      }
-         
+        
+     /*aca para no confundirme visualmente voy aponer de prueba para el model experiencia*/
+     @Autowired
+     private IExperienciaService expeServ;
+     @PostMapping("/exp")
+     public void agregarExperiencias(
+                                    @RequestBody 
+                                    Experiencia expe){
+         expeServ.agregarExperiencia(expe);
+     
+     }
+     
             
 }
