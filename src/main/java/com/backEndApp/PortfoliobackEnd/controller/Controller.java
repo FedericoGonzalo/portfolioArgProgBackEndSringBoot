@@ -37,6 +37,11 @@ public class Controller {
         persoServ.borrarPersona(id);
         
     }
-            
+     @GetMapping("/ver/persona/{id}")
+     @ResponseBody
+     public Persona buscarPersona(@PathVariable Long id){
+      return persoServ.buscarPersona(id);
+     }
+         
             
 }
