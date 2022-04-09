@@ -27,26 +27,26 @@ public class Controller {
 
     
     @Autowired
-    private IPersonaService persoServ;
+    private IPersonaService iPersona;
 
     @PostMapping("/new/persona")
     public void agregarPersonas(@RequestBody Persona perso){
-       persoServ.crearPersona(perso);
+       iPersona.crearPersona(perso);
     }
     @GetMapping("/ver/personas")
     @ResponseBody 
     public List<Persona> verPersonas(){
-      return persoServ.verPersonas();
+      return iPersona.verPersonas();
 }
     @DeleteMapping("/delete/{id}")
     public void borrarPersona (@PathVariable Long id){
-        persoServ.borrarPersona(id);
+        iPersona.borrarPersona(id);
         
     }
      @GetMapping("/persona/ver/{id}")
      @ResponseBody
      public Persona buscarPersona(@PathVariable Long id){
-      return persoServ.buscarPersona(id);
+      return iPersona.buscarPersona(id);
      }
      
      @PutMapping("/persona/editar/{id}")
@@ -55,10 +55,12 @@ public class Controller {
                                 @RequestParam ("apellido")String nuevoApellido,
                                 @RequestParam ("nacimiento")String nuevoNac
                                 ){
-         Persona perso = persoServ.buscarPersona(id);
+         Persona perso = iPersona.buscarPersona(id);
          perso.setApellido(nuevoApellido);
          perso.setNombre(nuevoNombre);
          perso.setNacimiento(nuevoNac);
+         
+         iPersona.crearPersona(perso);
       return perso;
      };
         

@@ -3,6 +3,7 @@ package com.backEndApp.PortfoliobackEnd.service;
 import com.backEndApp.PortfoliobackEnd.model.Persona;
 import com.backEndApp.PortfoliobackEnd.repository.PersonaRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,17 @@ public class PersonaService implements IPersonaService{
     public Persona buscarPersona(Long id) {
       return persoRepo.findById(id).orElse(null);  
     }
+
+   
+       
+      
+       
+    }
+
+   
+
     
+
+   
     
-}
+
