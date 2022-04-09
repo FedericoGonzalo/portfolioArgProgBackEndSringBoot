@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -11,7 +12,9 @@ import org.springframework.data.jpa.repository.EntityGraph;
 @Getter 
 @Setter
 @Entity
+
 public class Persona {
+   
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -22,7 +25,7 @@ public class Persona {
     private String password;
     
     private String nacimiento;
-   
+  
             
     public Persona(){
     }

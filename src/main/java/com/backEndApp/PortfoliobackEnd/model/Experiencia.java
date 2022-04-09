@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.EntityGraph;
 @Getter
 @Setter
 @Entity 
+
 public class Experiencia {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

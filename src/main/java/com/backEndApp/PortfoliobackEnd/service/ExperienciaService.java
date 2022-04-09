@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ExperienciaService implements IExperienciaService {
-   
+    @Autowired
     public ExperienciaRepository expeRepo;
 
     @Override
