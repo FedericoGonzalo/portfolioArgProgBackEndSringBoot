@@ -33,6 +33,53 @@ public class PersonaService implements IPersonaService{
       return persoRepo.findById(id).orElse(null);  
     }
 
+    @Override
+    public Persona editPersona(Long id, String nuevoNombre, String nuevoApellido, String nuevoNac) {
+      Persona perso = persoRepo.getById(id);
+        perso.setNombre(nuevoNombre);
+        perso.setApellido(nuevoApellido);
+        perso.setNacimiento(nuevoNac);
+        persoRepo.save(perso);
+     
+         
+         
+      return perso;
+    }
+   /*public Persona editPersona( Long id,
+                                String nuevoNombre,
+                                String nuevoApellido,
+                                String nuevoNac
+                                ){
+        Persona perso = persoRepo.getById(id);
+        perso.setNombre(nuevoNombre);
+        perso.setApellido(nuevoApellido);
+        perso.setNacimiento(nuevoNac);
+        persoRepo.save(perso);
+     
+         
+         
+      return perso;
+     };*/
+   
+   
+   /*  public Persona editPersona(Long id,
+                               String nuevoNombre, 
+                               String nuevoApellido, 
+                               String nuevoNac){
+         this.=id;
+       
+         perso setApellido=nuevoApellido;
+         perso setNombre=nuevoNombre;
+         perso setNacimiento=nuevoNac;
+         
+         persoRepo.save(perso);
+      return perso;
+  
+    
+    }*/
+
+   
+
    
        
       

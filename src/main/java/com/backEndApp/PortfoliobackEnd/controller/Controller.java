@@ -50,31 +50,16 @@ public class Controller {
      }
      
      @PutMapping("/persona/editar/{id}")
-     public Persona editPersona(@PathVariable Long id,
+     public void editPersona(@PathVariable Long id,
                                 @RequestParam ("nombre")String nuevoNombre,
                                 @RequestParam ("apellido")String nuevoApellido,
                                 @RequestParam ("nacimiento")String nuevoNac
                                 ){
-         Persona perso = iPersona.buscarPersona(id);
-         perso.setApellido(nuevoApellido);
-         perso.setNombre(nuevoNombre);
-         perso.setNacimiento(nuevoNac);
+   
+     iPersona.editPersona(id, nuevoNombre, nuevoApellido, nuevoNac);
          
-         iPersona.crearPersona(perso);
-      return perso;
      };
-        
-          /*
-     aca para no confundirme visualmente voy aponer de prueba para el model experiencia
-     @Autowired
-     private IExperienciaService expeServ;
-     @PostMapping("/exp")
-     public void agregarExperiencias(
-                                    @RequestBody 
-                                    Experiencia expe){
-         expeServ.agregarExperiencia(expe); 
-     }
-     */
+  
      
             
 }

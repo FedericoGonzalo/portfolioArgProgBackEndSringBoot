@@ -21,12 +21,9 @@ public class Persona {
     private String nombre;
     private String apellido;
     private String correo;
-  
     private String password;
-    
     private String nacimiento;
-  
-            
+           
     public Persona(){
     }
     public Persona(Long id ,String nombre, 
