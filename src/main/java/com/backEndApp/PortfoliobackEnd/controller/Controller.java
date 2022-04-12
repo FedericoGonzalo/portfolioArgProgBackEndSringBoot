@@ -5,7 +5,6 @@ import com.backEndApp.PortfoliobackEnd.model.Experiencia;
 import com.backEndApp.PortfoliobackEnd.model.Persona;
 import com.backEndApp.PortfoliobackEnd.service.IExperienciaService;
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,7 +27,8 @@ public class Controller {
     
     @Autowired
     private IPersonaService iPersona;
-
+    @Autowired 
+     private IExperienciaService iExperiencia;
     @PostMapping("/new/persona")
     public void agregarPersonas(@RequestBody Persona perso){
        iPersona.crearPersona(perso);
@@ -59,7 +59,12 @@ public class Controller {
      iPersona.editPersona(id, nuevoNombre, nuevoApellido, nuevoNac);
          
      };
-  
      
-            
+     @PostMapping ("/persona/ver/{id}/agregarExp")
+       public void agregarExperiencia (@PathVariable Long id,
+               @RequestBody Experiencia expe){
+          
+     
+       }
+    
 }

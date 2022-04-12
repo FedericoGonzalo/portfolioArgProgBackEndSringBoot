@@ -14,7 +14,7 @@ public interface IPersonaService {
                                String nuevoNombre, 
                                String nuevoApellido, 
                                String nuevoNac);
-   
+    
     
  
  
