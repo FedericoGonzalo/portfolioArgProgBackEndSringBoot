@@ -24,18 +24,20 @@ public class PersonaService implements IPersonaService{
     }
 
     @Override
-    public void borrarPersona(Long id) {
-      persoRepo.deleteById(id);
+    public void borrarPersona(Long idPersona) {
+      persoRepo.deleteById(idPersona);
     }
 
     @Override
-    public Persona buscarPersona(Long id) {
-      return persoRepo.findById(id).orElse(null);  
+    public Persona buscarPersona(Long idPersona) {
+      return persoRepo.findById(idPersona).orElse(null);  
     }
 
     @Override
-    public Persona editPersona(Long id, String nuevoNombre, String nuevoApellido, String nuevoNac) {
-      Persona perso = persoRepo.getById(id);
+    public Persona editPersona(Long idPersona, String nuevoNombre,
+                               String nuevoApellido,
+                               String nuevoNac) {
+      Persona perso = persoRepo.getById(idPersona);
         perso.setNombre(nuevoNombre);
         perso.setApellido(nuevoApellido);
         perso.setNacimiento(nuevoNac);
@@ -45,6 +47,8 @@ public class PersonaService implements IPersonaService{
          
       return perso;
     }
+
+   
   
 
     

@@ -8,14 +8,13 @@ import java.util.List;
 public interface IPersonaService {
     public List<Persona> verPersonas();
     public void crearPersona (Persona per);
-    public void borrarPersona (Long id);
-    public Persona buscarPersona(Long id);
-    public Persona editPersona(Long id,
+    public void borrarPersona (Long idPersona);
+    public Persona buscarPersona(Long idPersona);
+    public Persona editPersona(Long idPersona,
                                String nuevoNombre, 
                                String nuevoApellido, 
                                String nuevoNac);
-    
-    
+   
  
  
 }

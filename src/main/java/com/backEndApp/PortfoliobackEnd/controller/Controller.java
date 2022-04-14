@@ -29,6 +29,9 @@ public class Controller {
     private IPersonaService iPersona;
     @Autowired 
      private IExperienciaService iExperiencia;
+    
+    
+    
     @PostMapping("/new/persona")
     public void agregarPersonas(@RequestBody Persona perso){
        iPersona.crearPersona(perso);
@@ -60,11 +63,29 @@ public class Controller {
          
      };
      
-     @PostMapping ("/persona/ver/{id}/agregarExp")
+    /* @PostMapping ("/persona/ver/{id}/agregarExp")
        public void agregarExperiencia (@PathVariable Long id,
-               @RequestBody Experiencia expe){
+                                       @RequestBody List<Experiencia> expe){
+           Persona perso= iPersona.buscarPersona(id);
+           Experiencia expe = perso.getExperienciaLista() ;
+                    iExperiencia.agregarExperiencia(expe);
+           
           
+           
+           
+       };
+     */
      
-       }
+     @PutMapping("/n")
+     
+      public void agregarExp(
+              @RequestBody Experiencia expe){
+         
+          
+       iExperiencia.agregarExperiencia(expe);
+          
+     };
+             
+     
     
 }
