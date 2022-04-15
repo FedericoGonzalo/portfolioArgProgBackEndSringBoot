@@ -1,6 +1,7 @@
 
 package com.backEndApp.PortfoliobackEnd.controller;
 
+import com.backEndApp.PortfoliobackEnd.dto.PersonaDTO;
 import com.backEndApp.PortfoliobackEnd.model.Experiencia;
 import com.backEndApp.PortfoliobackEnd.model.Persona;
 import com.backEndApp.PortfoliobackEnd.service.IExperienciaService;
