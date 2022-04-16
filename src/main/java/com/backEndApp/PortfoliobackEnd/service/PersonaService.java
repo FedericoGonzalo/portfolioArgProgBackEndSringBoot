@@ -2,6 +2,7 @@ package com.backEndApp.PortfoliobackEnd.service;
 
 import com.backEndApp.PortfoliobackEnd.model.Persona;
 import com.backEndApp.PortfoliobackEnd.repository.PersonaRepository;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class PersonaService implements IPersonaService{
     @Override
     public Persona editPersona(Long idPersona, String nuevoNombre,
                                String nuevoApellido,
-                               String nuevoNac) {
+                               Date nuevoNac) {
       Persona perso = persoRepo.getById(idPersona);
         perso.setNombre(nuevoNombre);
         perso.setApellido(nuevoApellido);

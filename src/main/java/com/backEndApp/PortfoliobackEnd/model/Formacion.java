@@ -6,13 +6,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-
+@Table
 public class Formacion {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,19 +23,32 @@ private Long idFormacion;
 private String nombreTitulo;
 private String nombreInstituto;
 private Date fechaInicio;
-private Date fechafin;
+private Date fechaFin;
 private Boolean finalizado;//en workbench tinyint ojota
+
+@ManyToOne()
+@JoinColumn(name="tipo_formacion_id_tipo_formacion")
+private TipoFormacion tipoFormacion;
+
+@ManyToOne()
+    @JoinColumn(name="persona_id_persona")
+private Persona persona;
+
 
 public Formacion(){};
 public Formacion(Long idFormacion,
                   String nombreTitulo,
                   String nombreInstituto,
-                   Date fechaIniciado,
+                   Date fechaInicio,
                    Date fechaFin,
-                   Boolean finalizado){
+                   Boolean finalizado,
+                   TipoFormacion tipoFormacion,
+                   Persona persona){
 this.nombreTitulo=nombreInstituto;
 this.nombreInstituto=nombreInstituto;
 this.fechaInicio=fechaInicio;
-this.fechafin=fechafin;
-this.finalizado=finalizado;};
+this.fechaFin=fechaFin;
+this.finalizado=finalizado;
+this.tipoFormacion=tipoFormacion;
+this.persona=persona;};
 }

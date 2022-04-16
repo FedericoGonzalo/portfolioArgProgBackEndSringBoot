@@ -6,6 +6,7 @@ import com.backEndApp.PortfoliobackEnd.model.Experiencia;
 import com.backEndApp.PortfoliobackEnd.model.Persona;
 import com.backEndApp.PortfoliobackEnd.service.IExperienciaService;
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -57,7 +58,7 @@ public class Controller {
      public void editPersona(@PathVariable Long id,
                                 @RequestParam ("nombre")String nuevoNombre,
                                 @RequestParam ("apellido")String nuevoApellido,
-                                @RequestParam ("nacimiento")String nuevoNac
+                                @RequestParam ("nacimiento")Date nuevoNac
                                 ){
    
      iPersona.editPersona(id, nuevoNombre, nuevoApellido, nuevoNac);

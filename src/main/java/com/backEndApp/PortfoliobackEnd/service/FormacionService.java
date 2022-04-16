@@ -41,7 +41,7 @@ public class FormacionService implements IFormacionService {
         forma.setNombreTitulo(nuevoNombreTitulo);
         forma.setNombreInstituto(nuevoNombreInstituto);
         forma.setFechaInicio(nuevoFechaInicio);
-        forma.setFechafin(nuevoFechaFin);
+        forma.setFechaFin(nuevoFechaFin);
         forma.setFinalizado(nuevoFinalizado);
         formaRepo.save(forma);
         return forma ;

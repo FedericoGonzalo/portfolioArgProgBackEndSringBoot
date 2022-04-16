@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity 
-
+@Table
 public class Experiencia {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,18 +24,18 @@ public class Experiencia {
     private String descripcion;
     private String empresa;
     private String logoEmpresa;
-    
-    @javax.persistence.Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaInicio;
-   
-    @javax.persistence.Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaFin;
    
+    @ManyToOne()
+    @JoinColumn(name="tipo_experiencia_id_experiencia")
+    private TipoSkill tipoSkill;
+    
+   @ManyToOne()
+    @JoinColumn(name="persona_id_persona")
+   private Persona persona;
+    
 
-   
-   
-   
-   
    
    public Experiencia(){   } 
    public Experiencia(Long idExperiencia,
@@ -41,7 +44,9 @@ public class Experiencia {
             String empresa, 
             String logoEmpresa,
             Date fechaInicio,
-            Date fechaFin
+            Date fechaFin,
+            TipoSkill tipoSkill,
+            Persona persona
            
             )
     {
@@ -52,6 +57,8 @@ public class Experiencia {
     this.logoEmpresa=logoEmpresa;
     this.fechaInicio=fechaInicio;
     this.fechaFin=fechaFin;
+    this.tipoSkill=tipoSkill;
+    this.persona=persona;
     
   
     

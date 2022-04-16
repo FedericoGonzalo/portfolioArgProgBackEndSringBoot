@@ -2,6 +2,7 @@
 package com.backEndApp.PortfoliobackEnd.service;
 
 import com.backEndApp.PortfoliobackEnd.model.Persona;
+import java.util.Date;
 import java.util.List;
 
 
@@ -13,7 +14,7 @@ public interface IPersonaService {
     public Persona editPersona(Long idPersona,
                                String nuevoNombre, 
                                String nuevoApellido, 
-                               String nuevoNac);
+                               Date nuevoNac);
    
  
  
