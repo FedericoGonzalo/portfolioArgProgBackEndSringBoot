@@ -1,16 +1,14 @@
 package com.backEndApp.PortfoliobackEnd.model;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,10 +24,13 @@ public class Persona {
     private String apellido;
     private String correo;
     private String password;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    
     private Date nacimiento;
+    private String fotoUrl="https://i.postimg.cc/QCLS4sXd/585e4beacb11b227491c3399.png";
+    private String imgHeaderUrl= "https://upload.wikimedia.org/wikipedia/commons/9/94/Abstract_blue_background7.jpg";
      
-   @OneToOne(mappedBy="persona")
-    private ImagenPersona imagenPersona;
+  
   
    @OneToOne(mappedBy="persona")
     private AcercaPersona acercaPersona;
@@ -63,8 +64,11 @@ public class Persona {
                   String password,
                   Date nacimiento,
                   String acercaDe,
-                  ImagenPersona imagenPersona,
+                String fotoUrl,
+                String imgHeaderUrl,
                   AcercaPersona acercaPersona,
+                  
+                  
                   List<Proyecto> proyectos,
                   List<Skill> skills,
                   List<Experiencia> experiencias,
@@ -77,7 +81,8 @@ public class Persona {
         this.correo=correo;
         this.password=password;
         this.nacimiento=nacimiento;
-        this.imagenPersona=imagenPersona;
+        this.fotoUrl=fotoUrl;
+        this.imgHeaderUrl=imgHeaderUrl;
         this.acercaPersona=acercaPersona;
         this.proyectos=proyectos;
         this.skills=skills;
