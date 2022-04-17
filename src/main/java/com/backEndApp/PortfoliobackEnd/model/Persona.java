@@ -37,7 +37,7 @@ public class Persona {
    @OneToMany(mappedBy="persona",orphanRemoval = true)
     private List<Proyecto> proyectos;
    
-   @OneToOne(mappedBy="persona",orphanRemoval = true)
+   @OneToMany(mappedBy="persona",orphanRemoval = true)
     private List<Skill> skills;
    
    @OneToMany(mappedBy="persona",orphanRemoval = true)
@@ -66,7 +66,7 @@ public class Persona {
                   ImagenPersona imagenPersona,
                   AcercaPersona acercaPersona,
                   List<Proyecto> proyectos,
-                List<Skill> skills,
+                  List<Skill> skills,
                   List<Experiencia> experiencias,
                   List<Formacion> formaciones,
                   List<RedSocial> redesSociales

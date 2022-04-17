@@ -29,7 +29,7 @@ public class Experiencia {
    
     @ManyToOne()
     @JoinColumn(name="tipo_experiencia_id_experiencia")
-    private TipoSkill tipoSkill;
+    private TipoExperiencia tipoExperiencia;
     
    @ManyToOne()
     @JoinColumn(name="persona_id_persona")
@@ -45,7 +45,7 @@ public class Experiencia {
             String logoEmpresa,
             Date fechaInicio,
             Date fechaFin,
-            TipoSkill tipoSkill,
+            TipoExperiencia tipoExperiencia,
             Persona persona
            
             )
@@ -57,7 +57,7 @@ public class Experiencia {
     this.logoEmpresa=logoEmpresa;
     this.fechaInicio=fechaInicio;
     this.fechaFin=fechaFin;
-    this.tipoSkill=tipoSkill;
+    this.tipoExperiencia=tipoExperiencia;
     this.persona=persona;
     
   
