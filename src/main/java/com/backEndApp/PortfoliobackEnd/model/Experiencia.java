@@ -1,4 +1,5 @@
 package com.backEndApp.PortfoliobackEnd.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,9 @@ public class Experiencia {
     private String descripcion;
     private String empresa;
     private String logoEmpresa;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date fechaInicio;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date fechaFin;
    
     @ManyToOne()

@@ -29,8 +29,7 @@ public class Controller {
     
     @Autowired
     private IPersonaService iPersona;
-    @Autowired 
-     private IExperienciaService iExperiencia;
+    
     
     
     
@@ -43,25 +42,25 @@ public class Controller {
     public List<Persona> verPersonas(){
       return iPersona.verPersonas();
 }
-    @DeleteMapping("/delete/{id}")
-    public void borrarPersona (@PathVariable Long id){
-        iPersona.borrarPersona(id);
+    @DeleteMapping("/delete/{idPersona}")
+    public void borrarPersona (@PathVariable Long idPersona){
+        iPersona.borrarPersona(idPersona);
         
     }
-     @GetMapping("/persona/ver/{id}")
+     @GetMapping("/persona/ver/{idPersona}")
      @ResponseBody
-     public Persona buscarPersona(@PathVariable Long id){
-      return iPersona.buscarPersona(id);
+     public Persona buscarPersona(@PathVariable Long idPersona){
+      return iPersona.buscarPersona(idPersona);
      }
      
-     @PutMapping("/persona/editar/{id}")
-     public void editPersona(@PathVariable Long id,
+     @PostMapping("/persona/editar/{idPersona}")
+     public void editPersona(@PathVariable Long idPersona,
                                 @RequestParam ("nombre")String nuevoNombre,
                                 @RequestParam ("apellido")String nuevoApellido,
-                                @RequestParam ("nacimiento")Date nuevoNac
+                                @RequestParam ("fotoUrl")String nuevoFotoUrl
                                 ){
    
-     iPersona.editPersona(id, nuevoNombre, nuevoApellido, nuevoNac);
+     iPersona.editPersona(idPersona, nuevoNombre, nuevoApellido, nuevoFotoUrl);
          
      };
      
@@ -78,16 +77,7 @@ public class Controller {
        };
      */
      
-     @PutMapping("/n")
-     
-      public void agregarExp(
-              @RequestBody Experiencia expe){
-         
-          
-       iExperiencia.agregarExperiencia(expe);
-          
-     };
-             
+    
      
     
 }

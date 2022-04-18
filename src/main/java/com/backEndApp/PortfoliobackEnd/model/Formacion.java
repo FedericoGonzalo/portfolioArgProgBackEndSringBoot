@@ -1,6 +1,7 @@
 
 package com.backEndApp.PortfoliobackEnd.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,9 @@ public class Formacion {
 private Long idFormacion;
 private String nombreTitulo;
 private String nombreInstituto;
+@JsonFormat(pattern="yyyy-MM-dd")
 private Date fechaInicio;
+@JsonFormat(pattern="yyyy-MM-dd")
 private Date fechaFin;
 private Boolean finalizado;//en workbench tinyint ojota
 

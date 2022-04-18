@@ -1,6 +1,7 @@
 
 package com.backEndApp.PortfoliobackEnd.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +22,7 @@ public class Proyecto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idProyecto;
     private String nombre;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date fechaRealizacion;
     private String descripcion;
     private String urlProyecto;

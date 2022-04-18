@@ -14,7 +14,7 @@ public interface IPersonaService {
     public Persona editPersona(Long idPersona,
                                String nuevoNombre, 
                                String nuevoApellido, 
-                               Date nuevoNac);
+                               String nuevoFotoUrl);
    
  
  

@@ -37,11 +37,11 @@ public class PersonaService implements IPersonaService{
     @Override
     public Persona editPersona(Long idPersona, String nuevoNombre,
                                String nuevoApellido,
-                               Date nuevoNac) {
+                               String nuevoFotoUrl) {
       Persona perso = persoRepo.getById(idPersona);
         perso.setNombre(nuevoNombre);
         perso.setApellido(nuevoApellido);
-        perso.setNacimiento(nuevoNac);
+        perso.setFotoUrl(nuevoFotoUrl);
         persoRepo.save(perso);
      
          

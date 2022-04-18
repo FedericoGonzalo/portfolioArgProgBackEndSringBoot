@@ -1,4 +1,5 @@
 package com.backEndApp.PortfoliobackEnd.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -24,8 +25,8 @@ public class Persona {
     private String apellido;
     private String correo;
     private String password;
-    @Temporal(javax.persistence.TemporalType.DATE)
     
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date nacimiento;
     private String fotoUrl="https://i.postimg.cc/QCLS4sXd/585e4beacb11b227491c3399.png";
     private String imgHeaderUrl= "https://upload.wikimedia.org/wikipedia/commons/9/94/Abstract_blue_background7.jpg";
