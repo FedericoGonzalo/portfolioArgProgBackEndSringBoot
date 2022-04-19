@@ -1,5 +1,6 @@
 package com.backEndApp.PortfoliobackEnd.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -9,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,7 +41,8 @@ public class Persona {
    
    @OneToMany(mappedBy="persona",orphanRemoval = true)
     private List<Skill> skills;
-   
+    
+   @JsonManagedReference
    @OneToMany(mappedBy="persona",orphanRemoval = true)
     private List<Experiencia> experiencias;
    

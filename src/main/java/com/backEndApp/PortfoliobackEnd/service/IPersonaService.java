@@ -2,7 +2,6 @@
 package com.backEndApp.PortfoliobackEnd.service;
 
 import com.backEndApp.PortfoliobackEnd.model.Persona;
-import java.util.Date;
 import java.util.List;
 
 

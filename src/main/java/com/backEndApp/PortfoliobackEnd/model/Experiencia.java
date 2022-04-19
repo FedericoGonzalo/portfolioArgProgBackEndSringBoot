@@ -1,4 +1,5 @@
 package com.backEndApp.PortfoliobackEnd.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -24,7 +25,7 @@ public class Experiencia {
     private String puesto;
     private String descripcion;
     private String empresa;
-    private String logoEmpresa;
+    private String logoEmpresa="https://i.postimg.cc/2Shqwp02/pngwing-com.png";
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date fechaInicio;
     @JsonFormat(pattern="yyyy-MM-dd")
@@ -33,7 +34,8 @@ public class Experiencia {
     @ManyToOne()
     @JoinColumn(name="tipo_experiencia_id_experiencia")
     private TipoExperiencia tipoExperiencia;
-    
+   
+    @JsonBackReference
    @ManyToOne()
     @JoinColumn(name="persona_id_persona")
    private Persona persona;
