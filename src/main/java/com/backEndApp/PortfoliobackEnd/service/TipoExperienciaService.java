@@ -18,8 +18,8 @@ public class TipoExperienciaService implements ITipoExperienciaService{
     }
 
     @Override
-    public void agregarTipoExperiencia(TipoExperiencia tipoExp) {
-        tipoExpRepo.save(tipoExp);
+    public void agregarTipoExperiencia(TipoExperiencia newTipoExp) {
+        tipoExpRepo.save(newTipoExp);
         
     }
 
@@ -34,9 +34,9 @@ public class TipoExperienciaService implements ITipoExperienciaService{
     }
 
     @Override
-    public TipoExperiencia editarTipoExperiencia(Long idTipoExperiencia, String nuevoTipoExperiencia) {
+    public TipoExperiencia editarTipoExperiencia(Long idTipoExperiencia, String nuevoNombreTipoExperiencia) {
        TipoExperiencia tipoExpe = tipoExpRepo.getById(idTipoExperiencia);
-       tipoExpe.setTipoExperiencia(nuevoTipoExperiencia);
+       tipoExpe.setNombreTipoExperiencia(nuevoNombreTipoExperiencia);
        tipoExpRepo.save(tipoExpe);
        return tipoExpe;
                

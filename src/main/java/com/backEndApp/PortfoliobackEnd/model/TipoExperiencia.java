@@ -12,10 +12,10 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
-
+@Entity
 @Getter
 @Setter
-@Entity
+
 @Table
 
 public class TipoExperiencia {
@@ -23,7 +23,7 @@ public class TipoExperiencia {
     @GeneratedValue(strategy = GenerationType.AUTO)
     
     private Long idTipoExperiencia;
-    private String tipoExperiencia;
+    private String nombreTipoExperiencia;
     
     @OneToMany(mappedBy="tipoExperiencia")
     private List<Experiencia> experiencias;
@@ -33,10 +33,10 @@ public class TipoExperiencia {
     
     public TipoExperiencia(){};
     public TipoExperiencia(Long idTipoExperiencia,
-                            String tipoExperiencia,
+                            String nombreTipoExperiencia,
                             List<Experiencia> experiencias){
         this.idTipoExperiencia=idTipoExperiencia;
-        this.tipoExperiencia=tipoExperiencia;
+        this.nombreTipoExperiencia=nombreTipoExperiencia;
         this.experiencias=experiencias;
     };
     
