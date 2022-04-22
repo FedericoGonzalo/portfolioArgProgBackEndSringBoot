@@ -1,6 +1,7 @@
 
 package com.backEndApp.PortfoliobackEnd.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +23,7 @@ public class AcercaPersona {
     private Long idAcercaPersona;
     private String textoAcerca;
     
+    @JsonIgnore
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="persona_id_persona")
     private Persona persona;

@@ -36,8 +36,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Controller {
-    
+    /////////////////////////////////
+@Autowired
+    private IAcercaPersonaService iAcerca;
+    @PostMapping("/persona/{idPersona}/acercaPersona")
+     public void agregarAcerca(@PathVariable Long idPersona,
+                                @RequestBody AcercaPersona acerPer){
+         Persona persona=iPersona.buscarPersona(idPersona);
+         acerPer.setPersona(persona);
+         iAcerca.crearAcercaPersona(acerPer);
 
+     };
+    
+    
     ///////////////////////////////////////////////
     @Autowired
     private IPersonaService iPersona;
@@ -212,9 +223,7 @@ public class Controller {
 };
    ////
    
-    /////
-   /////acercadDePersona
-   
+  
 
    
    
