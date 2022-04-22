@@ -14,13 +14,17 @@ public class AcercaPersonaService implements IAcercaPersonaService{
 public AcercaPersonaRepository acerPerRepo;
  
     @Override
-    public List<AcercaPersona> verAcercapersonas() {
+    public List<AcercaPersona> verAcercaPersonas() {
         return acerPerRepo.findAll();
     }
 
     @Override
     public void crearAcercaPersona(AcercaPersona acerPer) {
-    acerPerRepo.save(acerPer);
+        
+       
+               
+        acerPerRepo.save(acerPer);
+    
     }
 
     @Override

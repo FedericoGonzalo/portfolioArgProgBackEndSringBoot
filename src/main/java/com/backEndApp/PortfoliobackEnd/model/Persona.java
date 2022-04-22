@@ -1,7 +1,9 @@
 package com.backEndApp.PortfoliobackEnd.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,12 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import lombok.Getter;
 import lombok.Setter;
-
+@Entity
 @Getter 
 @Setter
-@Entity
 @Table
 public class Persona {
     @Id
@@ -26,7 +28,8 @@ public class Persona {
     private String correo;
     private String password;
     
-    @JsonFormat(pattern="yyyy-MM-dd")
+   
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date nacimiento;
     private String fotoUrl="https://i.postimg.cc/QCLS4sXd/585e4beacb11b227491c3399.png";
     private String imgHeaderUrl= "https://upload.wikimedia.org/wikipedia/commons/9/94/Abstract_blue_background7.jpg";
@@ -37,20 +40,20 @@ public class Persona {
     private AcercaPersona acercaPersona;
    
    @OneToMany(mappedBy="persona",orphanRemoval = true)
-    private List<Proyecto> proyectos;
+    private List<Proyecto> proyectos=new LinkedList<Proyecto>();
    
    @OneToMany(mappedBy="persona",orphanRemoval = true)
-    private List<Skill> skills;
+    private List<Skill> skills=new LinkedList<Skill>();
     
-   @JsonManagedReference
+
    @OneToMany(mappedBy="persona",orphanRemoval = true)
-    private List<Experiencia> experiencias;
+    private List<Experiencia> experiencias=new LinkedList<Experiencia>();
    
    @OneToMany(mappedBy="persona",orphanRemoval = true)
-    private List<Formacion> formaciones;
+    private List<Formacion> formaciones=new LinkedList<Formacion>();
    
    @OneToMany(mappedBy="persona",orphanRemoval = true)
-    private List<RedSocial> redesSociales;
+    private List<RedSocial> redesSociales=new LinkedList<RedSocial>();
    
     
     

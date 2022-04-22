@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,7 +23,8 @@ public class Proyecto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idProyecto;
     private String nombre;
-    @JsonFormat(pattern="yyyy-MM-dd")
+   
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaRealizacion;
     private String descripcion;
     private String urlProyecto;

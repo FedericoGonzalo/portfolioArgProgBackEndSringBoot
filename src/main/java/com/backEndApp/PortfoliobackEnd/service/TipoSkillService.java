@@ -34,7 +34,7 @@ public class TipoSkillService implements ITipoSkillService {
     }
 
     @Override
-    public TipoSkill editarTipoSkill(Long idTipoSkill, String nuevoNombreTipoSkill) {
+    public TipoSkill editTipoSkill(Long idTipoSkill, String nuevoNombreTipoSkill) {
       TipoSkill tipSkill=tipoSkillRepo.getById(idTipoSkill);
       tipSkill.setNombreTipoSkill(nuevoNombreTipoSkill);
       tipoSkillRepo.save(tipSkill);

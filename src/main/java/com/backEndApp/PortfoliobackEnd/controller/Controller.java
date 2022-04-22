@@ -1,6 +1,7 @@
 
 package com.backEndApp.PortfoliobackEnd.controller;
 
+import com.backEndApp.PortfoliobackEnd.model.AcercaPersona;
 import com.backEndApp.PortfoliobackEnd.model.Experiencia;
 import com.backEndApp.PortfoliobackEnd.model.Persona;
 import com.backEndApp.PortfoliobackEnd.model.Skill;
@@ -8,6 +9,7 @@ import com.backEndApp.PortfoliobackEnd.model.TipoExperiencia;
 import com.backEndApp.PortfoliobackEnd.model.TipoFormacion;
 import com.backEndApp.PortfoliobackEnd.model.TipoRedSocial;
 import com.backEndApp.PortfoliobackEnd.model.TipoSkill;
+import com.backEndApp.PortfoliobackEnd.service.IAcercaPersonaService;
 import com.backEndApp.PortfoliobackEnd.service.IExperienciaService;
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
 import com.backEndApp.PortfoliobackEnd.service.ISkillService;
@@ -17,6 +19,7 @@ import com.backEndApp.PortfoliobackEnd.service.ITipoRedSocialService;
 import com.backEndApp.PortfoliobackEnd.service.ITipoSkillService;
 import java.util.ArrayList;
 import java.util.List;
+import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +38,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
     
 
-    
+    ///////////////////////////////////////////////
     @Autowired
     private IPersonaService iPersona;
 
@@ -60,7 +63,7 @@ public class Controller {
      public Persona buscarPersona(@PathVariable Long idPersona){
       return iPersona.buscarPersona(idPersona);
      }
-     
+     ///
      @PostMapping("/persona/editar/{idPersona}")
      public void editPersona(@PathVariable Long idPersona,
                                 @RequestParam ("nombre")String nuevoNombre,
@@ -71,30 +74,14 @@ public class Controller {
      iPersona.editPersona(idPersona, nuevoNombre, nuevoApellido, nuevoFotoUrl);
          
      };
-  @Autowired
-     private IExperienciaService iExperiencia;
-      @PutMapping("/persona/newExpe/{idPersona}")
-      public void agregarExperiencia(@RequestBody Experiencia expe,@PathVariable Long idPersona){
+     ///////////////////////////////////////////////////////////
 
-          
-         
-          
-          
-         
-      
-          
-      };
      
-    //
-      
-      @Autowired
-      private ISkillService iSkill;
-       
-        @PutMapping("/ver/persona/{idPersona}/newSkill")
-         public void agregarExp(){
-          };
+    
               
    //aca los iTipo  
+     
+   //TipoSkill  
    @Autowired
    private ITipoSkillService iTipoSkill;
   
@@ -116,13 +103,16 @@ public class Controller {
       return iTipoSkill.buscarTipoSkill(idTipoSkill);
              };
    
-   @PostMapping("/editTipo/skill/{idTipoSkill}")
+   
+    @PostMapping("/editTipo/skill/{idTipoSkill}")
    public void editTipoSkill   (@PathVariable Long idTipoSkill,
-                                @RequestParam ("nombreTipoSkill")String nuevoNombreTipoSkill){
-       iTipoSkill.editarTipoSkill(idTipoSkill, nuevoNombreTipoSkill);
+                                @RequestParam("nombreTipoSkill")String nuevoNombreTipoSkill){
+       iTipoSkill.editTipoSkill(idTipoSkill, nuevoNombreTipoSkill);
 };
    
     //
+   
+   //TipoRedSoc
    @Autowired
    private ITipoRedSocialService iTipoRedSoc;
   
@@ -152,17 +142,19 @@ public class Controller {
 };
    
       //  
+   //TipoFormacion
    @Autowired
    private ITipoFormacionService iTipoForma;
   
+   @PostMapping("/newTipo/formacion")
+   public void agregarTipoForma(@RequestBody TipoFormacion tipoForm){
+   iTipoForma.crearTipoFormacion(tipoForm);} ;
    
    @GetMapping("/listTipo/formacion")
    public List<TipoFormacion> verFormaciones(){
    return iTipoForma.verTiposFormacion();}
   
-   @PostMapping("/newTipo/formacion")
-   public void agregarForma(@RequestBody TipoFormacion newTipoFormacion){
-   iTipoForma.verTiposFormacion();} ;
+   
    
    @DeleteMapping("/deleteTipo/formacion/{idTipoFormacion}")
    public void borrarTipoFormacion (@PathVariable Long idTipoFormacion){
@@ -179,24 +171,26 @@ public class Controller {
    
    @PostMapping("/editTipo/formacion/{idTipoFormacion}")
    public void editTipoForma (@PathVariable Long idTipoFormacion,
-                                @RequestParam ("nombreFormacion")String nuevoNombreFormacion){
-       iTipoForma.editTipoFormacion(idTipoFormacion, nuevoNombreFormacion);
+                                @RequestParam ("nombreTipoFormacion")String nuevoNombreTipoFormacion){
+       iTipoForma.editTipoFormacion(idTipoFormacion, nuevoNombreTipoFormacion);
 };
     
   ///
+   
+   // TipoExpe
 
    
    @Autowired
    private ITipoExperienciaService iTipoExpe;
-  
+  @PostMapping("/newTipo/experiencia")
+   public void newTipoExperienia(@RequestBody TipoExperiencia tipoExper){
+   iTipoExpe.agregarTipoExperiencia(tipoExper);} ;
    
    @GetMapping("/listTipo/experiencia")
    public List<TipoExperiencia> verTiposExperiencias(){
    return iTipoExpe.verTipoExperiencias();};
   
-   @PostMapping("/newTipo/experiencia")
-   public void agregarTipoExperienia(@RequestBody TipoExperiencia newTipoExperiencia){
-   iTipoExpe.agregarTipoExperiencia(newTipoExperiencia);} ;
+   
    
    @DeleteMapping("/deleteTipo/experiencia/{idTipoExperiencia}")
    public void borrarTipoExpe (@PathVariable Long idTipoExperiencia){
@@ -218,7 +212,11 @@ public class Controller {
 };
    ////
    
-    
+    /////
+   /////acercadDePersona
+   
+
+   
    
     
 }

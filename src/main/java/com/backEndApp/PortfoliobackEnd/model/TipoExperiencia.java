@@ -2,6 +2,7 @@
 package com.backEndApp.PortfoliobackEnd.model;
 
 
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-
 @Table
 
 public class TipoExperiencia {
@@ -23,10 +23,11 @@ public class TipoExperiencia {
     @GeneratedValue(strategy = GenerationType.AUTO)
     
     private Long idTipoExperiencia;
+   
     private String nombreTipoExperiencia;
     
     @OneToMany(mappedBy="tipoExperiencia")
-    private List<Experiencia> experiencias;
+    private List<Experiencia> experiencias=new LinkedList<Experiencia>();
  
   
     

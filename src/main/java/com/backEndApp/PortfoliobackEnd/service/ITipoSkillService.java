@@ -10,8 +10,8 @@ public interface ITipoSkillService {
     public void agregarTipoSkill (TipoSkill newSkill);
     public void borrarTipoSkill(Long idTipoSkill);
     public TipoSkill buscarTipoSkill(Long idTipoSkill);
-    public TipoSkill editarTipoSkill(Long idTipoSkill,
-                                      String nuevoNombreTipoSkill);
+    public TipoSkill editTipoSkill(Long idTipoSkill,
+                                     String nuevoNombreTipoSkill);
     
     
     

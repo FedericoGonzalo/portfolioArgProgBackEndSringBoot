@@ -10,7 +10,7 @@ public interface ITipoFormacionService {
     public void borrarTipoFormacion(Long idTipoFormacion);
     public  TipoFormacion buscarTipoFormacion(Long idTipoFormacion);
     public TipoFormacion editTipoFormacion(Long idTipoFormacion,
-                                            String nuevoNombreFormacion);
+                                            String nuevoNombreTipoFormacion);
     
     
     

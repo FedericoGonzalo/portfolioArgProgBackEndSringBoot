@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,9 +24,11 @@ public class Formacion {
 private Long idFormacion;
 private String nombreTitulo;
 private String nombreInstituto;
-@JsonFormat(pattern="yyyy-MM-dd")
+
+@Temporal(javax.persistence.TemporalType.DATE)
 private Date fechaInicio;
-@JsonFormat(pattern="yyyy-MM-dd")
+
+@Temporal(javax.persistence.TemporalType.DATE)
 private Date fechaFin;
 private Boolean finalizado;//en workbench tinyint ojota
 

@@ -1,5 +1,6 @@
 package com.backEndApp.PortfoliobackEnd.model;
 
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,18 +19,19 @@ public class TipoFormacion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) 
     private Long idTipoFormacion;
-    private String nombreFormacion;
+    private String nombreTipoFormacion;
     
     @OneToMany(mappedBy="tipoFormacion")
-    private List<Formacion> formaciones;
+    private List<Formacion> formaciones=new LinkedList<Formacion>();
     
     public TipoFormacion(){};
     
     public TipoFormacion(Long idTipoFormacion,
-                          String nombreFormacion,
+                          String nombreTipoFormacion,
                           List<Formacion> formaciones){
     this.idTipoFormacion=idTipoFormacion;
-    this.nombreFormacion=nombreFormacion;
+    this.nombreTipoFormacion=nombreTipoFormacion;
+    this.formaciones=formaciones;
     }
     
            

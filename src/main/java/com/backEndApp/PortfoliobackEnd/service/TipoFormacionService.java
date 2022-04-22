@@ -35,12 +35,12 @@ public class TipoFormacionService implements ITipoFormacionService{
     
 
     @Override
-    public TipoFormacion editTipoFormacion(Long idTipoFormacion, String nuevoNombreFormacion){
-   TipoFormacion tipoFormacion = tipoFormaRepo.getById(idTipoFormacion);
+    public TipoFormacion editTipoFormacion(Long idTipoFormacion, String nuevoNombreTipoFormacion){
+   TipoFormacion TipoFormacion = tipoFormaRepo.getById(idTipoFormacion);
   
-   tipoFormacion.setNombreFormacion(nuevoNombreFormacion);
-   tipoFormaRepo.save(tipoFormacion );
-   return tipoFormacion;
+  TipoFormacion.setNombreTipoFormacion(nuevoNombreTipoFormacion);
+   tipoFormaRepo.save(TipoFormacion );
+   return TipoFormacion;
     
         
         

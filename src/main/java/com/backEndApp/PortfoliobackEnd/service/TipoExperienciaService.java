@@ -18,8 +18,8 @@ public class TipoExperienciaService implements ITipoExperienciaService{
     }
 
     @Override
-    public void agregarTipoExperiencia(TipoExperiencia newTipoExp) {
-        tipoExpRepo.save(newTipoExp);
+    public void agregarTipoExperiencia(TipoExperiencia tipoExper) {
+        tipoExpRepo.save(tipoExper);
         
     }
 

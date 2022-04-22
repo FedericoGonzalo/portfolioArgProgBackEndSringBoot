@@ -9,14 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 import lombok.Getter;
 import lombok.Setter;
 
-
+@Entity 
 @Getter
 @Setter
-@Entity 
 @Table
 public class Experiencia {
     @Id
@@ -26,18 +26,20 @@ public class Experiencia {
     private String descripcion;
     private String empresa;
     private String logoEmpresa="https://i.postimg.cc/2Shqwp02/pngwing-com.png";
-    @JsonFormat(pattern="yyyy-MM-dd")
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaInicio;
-    @JsonFormat(pattern="yyyy-MM-dd")
+   
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaFin;
    
     @ManyToOne()
     @JoinColumn(name="tipo_experiencia_id_experiencia")
     private TipoExperiencia tipoExperiencia;
    
-    @JsonBackReference
+  
    @ManyToOne()
-    @JoinColumn(name="persona_id_persona")
+   @JoinColumn(name="persona_id_persona")
    private Persona persona;
     
 
