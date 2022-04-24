@@ -4,7 +4,6 @@ package com.backEndApp.PortfoliobackEnd.controller;
 import com.backEndApp.PortfoliobackEnd.model.AcercaPersona;
 import com.backEndApp.PortfoliobackEnd.model.Experiencia;
 import com.backEndApp.PortfoliobackEnd.model.Persona;
-import com.backEndApp.PortfoliobackEnd.model.Skill;
 import com.backEndApp.PortfoliobackEnd.model.TipoExperiencia;
 import com.backEndApp.PortfoliobackEnd.model.TipoFormacion;
 import com.backEndApp.PortfoliobackEnd.model.TipoRedSocial;
@@ -12,12 +11,10 @@ import com.backEndApp.PortfoliobackEnd.model.TipoSkill;
 import com.backEndApp.PortfoliobackEnd.service.IAcercaPersonaService;
 import com.backEndApp.PortfoliobackEnd.service.IExperienciaService;
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
-import com.backEndApp.PortfoliobackEnd.service.ISkillService;
 import com.backEndApp.PortfoliobackEnd.service.ITipoExperienciaService;
 import com.backEndApp.PortfoliobackEnd.service.ITipoFormacionService;
 import com.backEndApp.PortfoliobackEnd.service.ITipoRedSocialService;
 import com.backEndApp.PortfoliobackEnd.service.ITipoSkillService;
-import java.util.ArrayList;
 import java.util.List;
 import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +23,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -36,10 +32,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Controller {
-    /////////////////////////////////
+   @Autowired
+     private IExperienciaService iExpe;
+   
+  
+     @PostMapping("/persona/ver/{idPersona}/newExperiencia")
+     public void agregarExpPerso(
+                                @PathVariable Long idPersona,
+                                @RequestBody Experiencia expe ){
+        
+        Persona perso=iPersona.buscarPersona(idPersona);
+        expe.setPersona(perso);
+        
+        iExpe.agregarExperiencia(expe);
+        
+     
+     
+     
+     };
+     
+       /////////////////////////////////
 @Autowired
     private IAcercaPersonaService iAcerca;
-    @PostMapping("/persona/{idPersona}/acercaPersona")
+    @PostMapping("/persona/ver/{idPersona}/acercaPersona")
      public void agregarAcerca(@PathVariable Long idPersona,
                                 @RequestBody AcercaPersona acerPer){
          Persona persona=iPersona.buscarPersona(idPersona);
@@ -47,14 +62,13 @@ public class Controller {
          iAcerca.crearAcercaPersona(acerPer);
 
      };
-    
-    
+    ////////////////////////////////////////////////
+   
+          
     ///////////////////////////////////////////////
     @Autowired
     private IPersonaService iPersona;
 
-    
-    
     @PostMapping("/new/persona")
     public void agregarPersonas(@RequestBody Persona perso){
        iPersona.crearPersona(perso);

@@ -1,6 +1,7 @@
 
 package com.backEndApp.PortfoliobackEnd.model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class TipoRedSocial {
      private String urlLogo;
      
      @OneToMany(mappedBy="tipoRedSocial")
-     private List<RedSocial> redesSociales=new LinkedList<RedSocial>();
+     private List<RedSocial> redesSociales=new ArrayList<>();
      
      public TipoRedSocial(){};
        public TipoRedSocial(Long idTipoRedSocial,

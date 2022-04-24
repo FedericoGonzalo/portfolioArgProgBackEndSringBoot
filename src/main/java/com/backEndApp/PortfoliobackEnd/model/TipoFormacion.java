@@ -1,5 +1,6 @@
 package com.backEndApp.PortfoliobackEnd.model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class TipoFormacion {
     private String nombreTipoFormacion;
     
     @OneToMany(mappedBy="tipoFormacion")
-    private List<Formacion> formaciones=new LinkedList<Formacion>();
+    private List<Formacion> formaciones=new ArrayList<>();
     
     public TipoFormacion(){};
     

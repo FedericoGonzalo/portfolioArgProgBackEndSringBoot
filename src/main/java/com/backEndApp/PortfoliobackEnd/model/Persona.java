@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,27 +34,31 @@ public class Persona {
     private Date nacimiento;
     private String fotoUrl="https://i.postimg.cc/QCLS4sXd/585e4beacb11b227491c3399.png";
     private String imgHeaderUrl= "https://upload.wikimedia.org/wikipedia/commons/9/94/Abstract_blue_background7.jpg";
-     
+    private String acercaTexto="TEXTO ACERCA DEL USUARIO" ;
   
   
    @OneToOne(mappedBy="persona")
     private AcercaPersona acercaPersona;
+    
+   
+   @OneToMany(mappedBy="persona")
+    private List<Experiencia> experiencias=new ArrayList<>();
+   
    
    @OneToMany(mappedBy="persona",orphanRemoval = true)
-    private List<Proyecto> proyectos=new LinkedList<Proyecto>();
+    private List<Proyecto> proyectos=new ArrayList<>();
    
    @OneToMany(mappedBy="persona",orphanRemoval = true)
-    private List<Skill> skills=new LinkedList<Skill>();
+    private List<Skill> skills=new ArrayList<>();
     
 
-   @OneToMany(mappedBy="persona",orphanRemoval = true)
-    private List<Experiencia> experiencias=new LinkedList<Experiencia>();
+  
    
    @OneToMany(mappedBy="persona",orphanRemoval = true)
-    private List<Formacion> formaciones=new LinkedList<Formacion>();
+    private List<Formacion> formaciones=new ArrayList<>();
    
    @OneToMany(mappedBy="persona",orphanRemoval = true)
-    private List<RedSocial> redesSociales=new LinkedList<RedSocial>();
+    private List<RedSocial> redesSociales=new ArrayList<>();
    
     
     
@@ -71,7 +76,10 @@ public class Persona {
                   String acercaDe,
                 String fotoUrl,
                 String imgHeaderUrl,
-                  AcercaPersona acercaPersona,
+                  String acercaTexto,
+                
+                
+                AcercaPersona acercaPersona,
                   
                   
                   List<Proyecto> proyectos,
@@ -88,7 +96,10 @@ public class Persona {
         this.nacimiento=nacimiento;
         this.fotoUrl=fotoUrl;
         this.imgHeaderUrl=imgHeaderUrl;
+        this.acercaTexto=acercaTexto;
+        
         this.acercaPersona=acercaPersona;
+        
         this.proyectos=proyectos;
         this.skills=skills;
         this.experiencias=experiencias;

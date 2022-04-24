@@ -1,6 +1,7 @@
 package com.backEndApp.PortfoliobackEnd.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,31 +33,30 @@ public class Experiencia {
    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaFin;
-   
+  
     @ManyToOne()
-    @JoinColumn(name="tipo_experiencia_id_experiencia")
+    @JoinColumn(name="tipo_experiencia_id_tipo_experiencia")
+    @JsonIgnore
     private TipoExperiencia tipoExperiencia;
    
-  
+ 
    @ManyToOne()
-   @JoinColumn(name="persona_id_persona")
-   private Persona persona;
+  @JoinColumn(name="persona_id_persona")
+  @JsonIgnore
+  private Persona persona;
     
 
    
    public Experiencia(){   } 
    public Experiencia(Long idExperiencia,
-            String puesto,
-            String descripcion,
+                      String puesto,
+                      String descripcion,
             String empresa, 
             String logoEmpresa,
             Date fechaInicio,
             Date fechaFin,
             TipoExperiencia tipoExperiencia,
-            Persona persona
-           
-            )
-    {
+            Persona persona){
     this.idExperiencia=idExperiencia;
     this.puesto=puesto;
     this.descripcion=descripcion;

@@ -1,6 +1,7 @@
 
 package com.backEndApp.PortfoliobackEnd.model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -24,7 +25,7 @@ public class TipoSkill {
     private String nombreTipoSkill;
     
     @OneToMany(mappedBy="tipoSkill")
-    private List<Skill> skills=new LinkedList<Skill>();
+    private List<Skill> skills=new ArrayList<>();
     
     public TipoSkill(){};
     public TipoSkill(Long idTipoSkill,
