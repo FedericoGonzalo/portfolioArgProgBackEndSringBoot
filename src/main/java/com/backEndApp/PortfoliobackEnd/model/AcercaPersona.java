@@ -3,7 +3,9 @@ package com.backEndApp.PortfoliobackEnd.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,12 +23,15 @@ public class AcercaPersona {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idAcercaPersona;
-    private String textoAcerca;
+    private String textoAcerca="DESCRIPCION ACERCA DEL USUARIO";
+    
     
     @JsonIgnore
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="persona_id_persona")
-    private Persona persona;
+    
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    @JoinColumn(name="persona_id_persona",unique = true, nullable = false)
+    private Persona persona ;
+    
     
     public AcercaPersona(){};
     public AcercaPersona(Long idAcercaPersona,

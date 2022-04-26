@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,10 +27,11 @@ public class TipoExperiencia {
     @GeneratedValue(strategy = GenerationType.AUTO)
     
     private Long idTipoExperiencia;
-   
+    @Column(unique = true)
     private String nombreTipoExperiencia;
-    @JsonIgnore
-    @OneToMany(mappedBy="tipoExperiencia")
+    
+    @OneToMany(mappedBy="tipoExperiencia",orphanRemoval = true,cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+   @JsonIgnore
     private List<Experiencia> experiencias=new ArrayList<>();
  
   

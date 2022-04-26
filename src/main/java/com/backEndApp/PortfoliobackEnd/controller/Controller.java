@@ -36,20 +36,18 @@ public class Controller {
      private IExperienciaService iExpe;
    
   
-     @PostMapping("/persona/ver/{idPersona}/newExperiencia")
+     @PostMapping("/persona/ver/{idPersona}/newExperiencia/{tipoExperienciaIdTipoExperiencia}")
      public void agregarExpPerso(
                                 @PathVariable Long idPersona,
+                                @PathVariable Long tipoExperienciaIdTipoExperiencia,
                                 @RequestBody Experiencia expe ){
-        
+        TipoExperiencia tipExpe=iTipoExpe.buscarTipoExperiencia(tipoExperienciaIdTipoExperiencia);
         Persona perso=iPersona.buscarPersona(idPersona);
         expe.setPersona(perso);
-        
-        iExpe.agregarExperiencia(expe);
-        
-     
-     
-     
+        expe.setTipoExperiencia(tipExpe);
+       iExpe.agregarExperiencia(expe);
      };
+     
      
        /////////////////////////////////
 @Autowired
@@ -70,25 +68,45 @@ public class Controller {
     private IPersonaService iPersona;
 
     @PostMapping("/new/persona")
-    public void agregarPersonas(@RequestBody Persona perso){
-       iPersona.crearPersona(perso);
-    }
+    public void agregarPersonas(@RequestBody Persona perso
+                                
+                                 ){
+        iPersona.crearPersona(perso);
+        AcercaPersona acerP=new AcercaPersona();
+        acerP.setPersona(perso);
+        iAcerca.crearAcercaPersona(acerP);
+        
+        
+        ;
+        
+      
+       
+        ;
+        
+       
+        
+        
+    };
     @GetMapping("/ver/personas")
     @ResponseBody 
     public List<Persona> verPersonas(){
       return iPersona.verPersonas();
-}
+};
+   
     @DeleteMapping("/delete/{idPersona}")
     public void borrarPersona (@PathVariable Long idPersona){
         iPersona.borrarPersona(idPersona);
         
-    }
-     @GetMapping("/persona/ver/{idPersona}")
+    };
+     
+  
+    @GetMapping("/persona/ver/{idPersona}")
      @ResponseBody
      public Persona buscarPersona(@PathVariable Long idPersona){
       return iPersona.buscarPersona(idPersona);
-     }
+     };
      ///
+    
      @PostMapping("/persona/editar/{idPersona}")
      public void editPersona(@PathVariable Long idPersona,
                                 @RequestParam ("nombre")String nuevoNombre,
@@ -101,7 +119,7 @@ public class Controller {
      };
      ///////////////////////////////////////////////////////////
 
-     
+     ///////////////////////////////////////////////////////////
     
               
    //aca los iTipo  

@@ -36,7 +36,7 @@ public class Experiencia {
   
     @ManyToOne()
     @JoinColumn(name="tipo_experiencia_id_tipo_experiencia")
-    @JsonIgnore
+  
     private TipoExperiencia tipoExperiencia;
    
  
