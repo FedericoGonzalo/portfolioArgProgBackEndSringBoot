@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,7 +33,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Controller {
-   @Autowired
+  
+    ///////////////Experiencia
+    @Autowired
      private IExperienciaService iExpe;
    
   
@@ -49,10 +52,11 @@ public class Controller {
      };
      
      
-       /////////////////////////////////
+       /////////////////////////////////Acerca De
 @Autowired
     private IAcercaPersonaService iAcerca;
-    @PostMapping("/persona/ver/{idPersona}/acercaPersona")
+
+  /*  @PostMapping("/persona/ver/{idPersona}/acercaPersona")//No usar ya que modifique para crear junto a creacion de usuario
      public void agregarAcerca(@PathVariable Long idPersona,
                                 @RequestBody AcercaPersona acerPer){
          Persona persona=iPersona.buscarPersona(idPersona);
@@ -60,33 +64,41 @@ public class Controller {
          iAcerca.crearAcercaPersona(acerPer);
 
      };
-    ////////////////////////////////////////////////
+*/
+     @PostMapping("/persona/ver/{idPersona}/editAcercaPersona")
+     public void cambiarTextoAcerPers(@PathVariable Long idPersona,
+                                       @RequestBody String nuevoTextoAcerca){
+     
+    
+     perso=iPersona.buscarPersona(idPersona);
+     AcercaPersona acerPer=perso.getAcercaPersona();
+     acerPer.setTextoAcerca(nuevoTextoAcerca);
+    
+         
+   
+  
+     
+     
+     };
+       
+        
+   
    
           
-    ///////////////////////////////////////////////
+    ////iPersona
     @Autowired
     private IPersonaService iPersona;
 
-    @PostMapping("/new/persona")
+    @PostMapping("/new/persona")//Tambien crea tabla acerca persona
     public void agregarPersonas(@RequestBody Persona perso
                                 
                                  ){
         iPersona.crearPersona(perso);
         AcercaPersona acerP=new AcercaPersona();
         acerP.setPersona(perso);
-        iAcerca.crearAcercaPersona(acerP);
-        
-        
-        ;
-        
-      
-       
-        ;
-        
-       
-        
-        
-    };
+        iAcerca.crearAcercaPersona(acerP);         
+        };
+    
     @GetMapping("/ver/personas")
     @ResponseBody 
     public List<Persona> verPersonas(){
@@ -117,9 +129,7 @@ public class Controller {
      iPersona.editPersona(idPersona, nuevoNombre, nuevoApellido, nuevoFotoUrl);
          
      };
-     ///////////////////////////////////////////////////////////
-
-     ///////////////////////////////////////////////////////////
+   
     
               
    //aca los iTipo  
@@ -153,7 +163,7 @@ public class Controller {
        iTipoSkill.editTipoSkill(idTipoSkill, nuevoNombreTipoSkill);
 };
    
-    //
+   
    
    //TipoRedSoc
    @Autowired
@@ -184,7 +194,7 @@ public class Controller {
        iTipoRedSoc.editarTipoRedSocial(idTipoRedSocial, nuevoNombreRedSocial, nuevoUrlLogo);
 };
    
-      //  
+      
    //TipoFormacion
    @Autowired
    private ITipoFormacionService iTipoForma;
@@ -218,7 +228,7 @@ public class Controller {
        iTipoForma.editTipoFormacion(idTipoFormacion, nuevoNombreTipoFormacion);
 };
     
-  ///
+ 
    
    // TipoExpe
 

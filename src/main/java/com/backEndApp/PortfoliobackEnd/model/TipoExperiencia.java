@@ -25,7 +25,7 @@ import lombok.Setter;
 public class TipoExperiencia {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    
+     @JsonIgnore
     private Long idTipoExperiencia;
     @Column(unique = true)
     private String nombreTipoExperiencia;
