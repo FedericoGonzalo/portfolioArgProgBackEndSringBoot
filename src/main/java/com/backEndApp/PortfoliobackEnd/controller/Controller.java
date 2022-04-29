@@ -18,6 +18,7 @@ import com.backEndApp.PortfoliobackEnd.service.ITipoSkillService;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Controller {
     
-      ////iPersona/////
+      ////*********iPersona*****************/////
     @Autowired
     private IPersonaService iPersona;
 
@@ -76,7 +77,7 @@ public class Controller {
    
     
   
-    ////////iExperiencia///////
+    //******************/iExperiencia******************///////
     @Autowired
      private IExperienciaService iExpe;
    
@@ -98,49 +99,56 @@ public class Controller {
             
              return persoExperiencias;
        };
-     //edicion por cada elemento. abajo templeate para repetir
-   /*
-     @PostMapping("/persona/ver/{idExperiencia}/editExperiencia")
-     public void editarExpe(@PathVariable Long idExperiencia
-            
-               ){
-     
-     };
-   */
+    
      @PostMapping("/persona/ver/{idExperiencia}/editPuesto")
-     public void editarPuesto(@RequestParam("puesto") String nuevoPuesto,
+     public void editarExpePuesto(@RequestParam("puesto") String nuevoPuesto,
                           @PathVariable Long idExperiencia ){
         iExpe.editarExperienciaPuesto(idExperiencia, nuevoPuesto);
          
      
      };
      @PostMapping("/persona/ver/{idExperiencia}/editDescripcion")
-     public void editarDescrip(@RequestParam("descripcion") String nuevaDescripcion,
+     public void editarExpeDescrip(@RequestParam("descripcion") String nuevaDescripcion,
                             @PathVariable Long idExperiencia  ){
                  iExpe.editarExperienciaDescripcion(idExperiencia, nuevaDescripcion);
      };
        
     @PostMapping("/persona/ver/{idExperiencia}/editEmpresa")
-     public void editarEmpresa(@RequestParam("empresa") String nuevaEmpresa,
+     public void editarExpeEmpresa(@RequestParam("empresa") String nuevaEmpresa,
                            @PathVariable Long idExperiencia){
                iExpe.editarExperienciaEmpresa(idExperiencia, nuevaEmpresa);
      };
      
      @PostMapping("/persona/ver/{idExperiencia}/editLogoEmp")
-     public void editarLogoEmp(@RequestParam("logoEmp") String nuevoLogoEmpresa,
+     public void editarExpeLogoEmp(@RequestParam("logoEmp") String nuevoLogoEmpresa,
                              @PathVariable Long idExperiencia){
      iExpe.editarExperienciaLogoEmp(idExperiencia, nuevoLogoEmpresa);
      };
-     @PostMapping("/persona/ver/{idExperiencia}/editExperienciaInicio")
-     public void editarInicio(@RequestParam("nuevoInicio")Date nuevoInicio,
+   @PostMapping("/persona/ver/{idExperiencia}/editInicio")
+     public void editarExpeInicio(@RequestParam("nuevoInicio")Date nuevoInicio,
                             @PathVariable Long idExperiencia){
          iExpe.editarExperienciaFechaInicio(idExperiencia, nuevoInicio);
      
      };
      
-     
+      @PostMapping("/persona/ver/{idExperiencia}/editFin")
+     public void editarExpeFin(@RequestParam("nuevoFin")Date nuevoFin,
+                               @PathVariable Long idExperiencia){
+      
+        iExpe.editarExperienciaFechaFin(idExperiencia, nuevoFin);
+                     
+     };
+@DeleteMapping("/persona/ver/{idExperiencia}/delExp")
+    public void borrarExpe(@PathVariable Long idExperiencia){
+    iExpe.borrarExperiencia(idExperiencia);
+    };
+    
+     //con este
+    
+     //
      @PostMapping("/persona/ver/{idExperiencia}/TipoExpe")
-     public void editarTipoExpe(
+       
+     public void editarTipoExpe( 
                                 @RequestParam("tipoExperiencia") Long idTipoExperiencia,
                                 @PathVariable Long idExperiencia
                             ){
@@ -150,7 +158,7 @@ public class Controller {
      
     
      
-       ///////////////Acerca De//////////////////
+       //**********Acerca De******************////
 @Autowired
     private IAcercaPersonaService iAcerca;
 
@@ -161,9 +169,7 @@ public class Controller {
                                 @RequestBody AcercaPersona acerPer){
          Persona persona=iPersona.buscarPersona(idPersona);
          acerPer.setPersona(persona);
-         iAcerca.crearAcercaPersona(acerPer);
-
-     };
+         iAcerca.crearAcercaPersona(acerPer); };
 */
      @PostMapping("/persona/ver/{idPersona}/edit/AcercaPersona")
      public void cambiarTextoAcerPers(@PathVariable Long idPersona,
@@ -173,9 +179,9 @@ public class Controller {
     
      };
                 
-   //aca los iTipo  //
+   //*********aca los iTipo ************* //
      
-   //TipoSkill  //
+   //*************TipoSkill ********** //
    @Autowired
    private ITipoSkillService iTipoSkill;
   
@@ -206,7 +212,7 @@ public class Controller {
    
    
    
-   //TipoRedSoc
+   //***********TipoRedSoc************
    @Autowired
    private ITipoRedSocialService iTipoRedSoc;
   
@@ -236,7 +242,7 @@ public class Controller {
 };
    
       
-   //TipoFormacion
+   //*************TipoFormacion****************
    @Autowired
    private ITipoFormacionService iTipoForma;
   
@@ -272,7 +278,7 @@ public class Controller {
     
  
    
-   // TipoExpe
+   //************** TipoExpe*******************
 
    
    @Autowired

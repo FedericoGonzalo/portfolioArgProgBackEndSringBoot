@@ -14,6 +14,7 @@ import javax.persistence.Temporal;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity 
 @Getter
@@ -29,10 +30,14 @@ public class Experiencia {
     private String logoEmpresa="https://i.postimg.cc/2Shqwp02/pngwing-com.png";
     
     @Temporal(javax.persistence.TemporalType.DATE)
+  //  @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date fechaInicio;
    
-    @Temporal(javax.persistence.TemporalType.DATE)
+   @Temporal(javax.persistence.TemporalType.DATE)
+  // @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date fechaFin;
+    
+    
   
     @ManyToOne()
     @JoinColumn(name="tipo_experiencia_id_tipo_experiencia")

@@ -95,7 +95,7 @@ public class ExperienciaService implements IExperienciaService {
     @Override
     public void editarExperienciaFechaFin(Long idExperiencia, Date nuevoFechaFin) {
       Experiencia expe=expeRepo.getById(idExperiencia);
-         
+         expe.setFechaFin(nuevoFechaFin);
          expeRepo.save(expe);   
     }
 
@@ -106,12 +106,4 @@ public class ExperienciaService implements IExperienciaService {
          expeRepo.save(expe);
     }
 
-    
-
-  
-    
-    
-    
-    
-    
 }
