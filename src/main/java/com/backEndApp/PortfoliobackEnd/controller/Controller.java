@@ -15,84 +15,28 @@ import com.backEndApp.PortfoliobackEnd.service.ITipoExperienciaService;
 import com.backEndApp.PortfoliobackEnd.service.ITipoFormacionService;
 import com.backEndApp.PortfoliobackEnd.service.ITipoRedSocialService;
 import com.backEndApp.PortfoliobackEnd.service.ITipoSkillService;
+import java.util.Date;
 import java.util.List;
-import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 public class Controller {
-  
-    ///////////////Experiencia
-    @Autowired
-     private IExperienciaService iExpe;
-   
-  
-     @PostMapping("/persona/ver/{idPersona}/newExperiencia/{tipoExperienciaIdTipoExperiencia}")
-     public void agregarExpPerso(
-                                @PathVariable Long idPersona,
-                                @PathVariable Long tipoExperienciaIdTipoExperiencia,
-                                @RequestBody Experiencia expe ){
-        TipoExperiencia tipExpe=iTipoExpe.buscarTipoExperiencia(tipoExperienciaIdTipoExperiencia);
-        Persona perso=iPersona.buscarPersona(idPersona);
-        expe.setPersona(perso);
-        expe.setTipoExperiencia(tipExpe);
-       iExpe.agregarExperiencia(expe);
-     };
-     
-     
-       /////////////////////////////////Acerca De
-@Autowired
-    private IAcercaPersonaService iAcerca;
-
-  /*  @PostMapping("/persona/ver/{idPersona}/acercaPersona")//No usar ya que modifique para crear junto a creacion de usuario
-     public void agregarAcerca(@PathVariable Long idPersona,
-                                @RequestBody AcercaPersona acerPer){
-         Persona persona=iPersona.buscarPersona(idPersona);
-         acerPer.setPersona(persona);
-         iAcerca.crearAcercaPersona(acerPer);
-
-     };
-*/
-     @PostMapping("/persona/ver/{idPersona}/editAcercaPersona")
-     public void cambiarTextoAcerPers(@PathVariable Long idPersona,
-                                       @RequestBody String nuevoTextoAcerca){
-     
     
-     perso=iPersona.buscarPersona(idPersona);
-     AcercaPersona acerPer=perso.getAcercaPersona();
-     acerPer.setTextoAcerca(nuevoTextoAcerca);
-    
-         
-   
-  
-     
-     
-     };
-       
-        
-   
-   
-          
-    ////iPersona
+      ////iPersona/////
     @Autowired
     private IPersonaService iPersona;
 
     @PostMapping("/new/persona")//Tambien crea tabla acerca persona
-    public void agregarPersonas(@RequestBody Persona perso
-                                
-                                 ){
+    public void agregarPersonas(@RequestBody Persona perso){
         iPersona.crearPersona(perso);
         AcercaPersona acerP=new AcercaPersona();
         acerP.setPersona(perso);
@@ -117,7 +61,7 @@ public class Controller {
      public Persona buscarPersona(@PathVariable Long idPersona){
       return iPersona.buscarPersona(idPersona);
      };
-     ///
+     ///// el edit persona tiene algunos parametros funciona si se pasan los parametros sino erro ergo hay que hacerlo uno por uno 
     
      @PostMapping("/persona/editar/{idPersona}")
      public void editPersona(@PathVariable Long idPersona,
@@ -131,10 +75,107 @@ public class Controller {
      };
    
     
-              
-   //aca los iTipo  
+  
+    ////////iExperiencia///////
+    @Autowired
+     private IExperienciaService iExpe;
+   
+  
+     @PostMapping("/persona/ver/{idPersona}/newExperiencia")
+     public void agregarExpPerso(
+                                @PathVariable Long idPersona,
+                                @RequestParam("tipoExperiencia")Long idTipoExperiencia,
+                                @RequestBody Experiencia expe ){
+   
+        expe.setPersona(iPersona.buscarPersona(idPersona));
+        expe.setTipoExperiencia(iTipoExpe.buscarTipoExperiencia(idTipoExperiencia));
+        iExpe.agregarExperiencia(expe);
+     };
+     @GetMapping("/persona/ver/{idPersona}/listExperiencia")
+     public List experienciasPersona(@PathVariable Long idPersona){
+             Persona per=iPersona.buscarPersona(idPersona);
+             List<Experiencia> persoExperiencias=per.getExperiencias();
+            
+             return persoExperiencias;
+       };
+     //edicion por cada elemento. abajo templeate para repetir
+   /*
+     @PostMapping("/persona/ver/{idExperiencia}/editExperiencia")
+     public void editarExpe(@PathVariable Long idExperiencia
+            
+               ){
      
-   //TipoSkill  
+     };
+   */
+     @PostMapping("/persona/ver/{idExperiencia}/editPuesto")
+     public void editarPuesto(@RequestParam("puesto") String nuevoPuesto,
+                          @PathVariable Long idExperiencia ){
+        iExpe.editarExperienciaPuesto(idExperiencia, nuevoPuesto);
+         
+     
+     };
+     @PostMapping("/persona/ver/{idExperiencia}/editDescripcion")
+     public void editarDescrip(@RequestParam("descripcion") String nuevaDescripcion,
+                            @PathVariable Long idExperiencia  ){
+                 iExpe.editarExperienciaDescripcion(idExperiencia, nuevaDescripcion);
+     };
+       
+    @PostMapping("/persona/ver/{idExperiencia}/editEmpresa")
+     public void editarEmpresa(@RequestParam("empresa") String nuevaEmpresa,
+                           @PathVariable Long idExperiencia){
+               iExpe.editarExperienciaEmpresa(idExperiencia, nuevaEmpresa);
+     };
+     
+     @PostMapping("/persona/ver/{idExperiencia}/editLogoEmp")
+     public void editarLogoEmp(@RequestParam("logoEmp") String nuevoLogoEmpresa,
+                             @PathVariable Long idExperiencia){
+     iExpe.editarExperienciaLogoEmp(idExperiencia, nuevoLogoEmpresa);
+     };
+     @PostMapping("/persona/ver/{idExperiencia}/editExperienciaInicio")
+     public void editarInicio(@RequestParam("nuevoInicio")Date nuevoInicio,
+                            @PathVariable Long idExperiencia){
+         iExpe.editarExperienciaFechaInicio(idExperiencia, nuevoInicio);
+     
+     };
+     
+     
+     @PostMapping("/persona/ver/{idExperiencia}/TipoExpe")
+     public void editarTipoExpe(
+                                @RequestParam("tipoExperiencia") Long idTipoExperiencia,
+                                @PathVariable Long idExperiencia
+                            ){
+         TipoExperiencia nuevoTipoExperiencia=iTipoExpe.buscarTipoExperiencia(idTipoExperiencia);
+         iExpe.editarExperienciaTipoExpe(idExperiencia, nuevoTipoExperiencia);
+       };
+     
+    
+     
+       ///////////////Acerca De//////////////////
+@Autowired
+    private IAcercaPersonaService iAcerca;
+
+  /*
+  //No usar,se crea con creacion de usuario
+@PostMapping("/persona/ver/{idPersona}/acercaPersona")
+     public void agregarAcerca(@PathVariable Long idPersona,
+                                @RequestBody AcercaPersona acerPer){
+         Persona persona=iPersona.buscarPersona(idPersona);
+         acerPer.setPersona(persona);
+         iAcerca.crearAcercaPersona(acerPer);
+
+     };
+*/
+     @PostMapping("/persona/ver/{idPersona}/edit/AcercaPersona")
+     public void cambiarTextoAcerPers(@PathVariable Long idPersona,
+                                       @RequestParam("textoAcerca") String nuevoTextoAcerca){
+       
+         iAcerca.editarAcercaPersona((idPersona+1),  nuevoTextoAcerca);
+    
+     };
+                
+   //aca los iTipo  //
+     
+   //TipoSkill  //
    @Autowired
    private ITipoSkillService iTipoSkill;
   
@@ -226,6 +267,7 @@ public class Controller {
    public void editTipoForma (@PathVariable Long idTipoFormacion,
                                 @RequestParam ("nombreTipoFormacion")String nuevoNombreTipoFormacion){
        iTipoForma.editTipoFormacion(idTipoFormacion, nuevoNombreTipoFormacion);
+       
 };
     
  
