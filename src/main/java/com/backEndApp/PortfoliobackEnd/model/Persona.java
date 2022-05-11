@@ -30,9 +30,7 @@ public class Persona {
     private String nombre;
     private String apellido;
    
-    private String correo;
-    
-    private String password;
+   
     
    
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -77,8 +75,8 @@ public class Persona {
     public Persona(Long idPersona ,
                   String nombre, 
                   String apellido,
-                  String correo,
-                  String password,
+                  
+                  
                   Date nacimiento,
                   String acercaDe,
                 String fotoUrl,
@@ -98,8 +96,7 @@ public class Persona {
         this.idPersona = idPersona;
         this.nombre= nombre;
         this.apellido=apellido;
-        this.correo=correo;
-        this.password=password;
+       
         this.nacimiento=nacimiento;
         this.fotoUrl=fotoUrl;
         this.imgHeaderUrl=imgHeaderUrl;

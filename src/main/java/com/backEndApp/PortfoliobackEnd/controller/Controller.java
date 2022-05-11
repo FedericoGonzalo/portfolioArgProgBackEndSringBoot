@@ -35,8 +35,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/personas")
 //@CrossOrigin(origins = "http://localhost:4200&quot;)
 public class Controller {
-    
+   
       ////*********iPersona*****************/////
+   /*
     @Autowired
     private IPersonaService iPersona;
 
@@ -66,8 +67,9 @@ public class Controller {
      public Persona buscarPersona(@PathVariable Long idPersona){
       return iPersona.buscarPersona(idPersona);
      };
+    */
      ///// el edit persona tiene algunos parametros funciona si se pasan los parametros sino erro ergo hay que hacerlo uno por uno 
-    
+    /*
      @PostMapping("/persona/editar/{idPersona}")
      public void editPersona(@PathVariable Long idPersona,
                                 @RequestParam ("nombre")String nuevoNombre,
@@ -79,9 +81,12 @@ public class Controller {
          
      };
    
-    
+    */
   
     //******************/iExperiencia******************///////
+  
+    /*
+    
     @Autowired
      private IExperienciaService iExpe;
    
