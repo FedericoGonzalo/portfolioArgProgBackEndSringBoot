@@ -36,15 +36,39 @@ public class ProyectoService implements IProyectoService{
     }
 
     @Override
-    public Proyecto editarProyecto(Long idProyecto, String nuevoNombre, Date nuevoFechaRealizacion, String nuevaDescripcion, String nuevaUrlProyecto, String nuevaUrlImagenProyecto) {
+    public void editarProyectoNombre(Long idProyecto, String nuevoNombre) {
       Proyecto proye=proyectRepo.getById(idProyecto);
       proye.setNombre(nuevoNombre);
-      proye.setFechaRealizacion(nuevoFechaRealizacion);
-      proye.setDescripcion(nuevaDescripcion);
-      proye.setUrlProyecto(nuevaUrlProyecto);
-      proye.setUrlImagenProyecto(nuevaUrlImagenProyecto);
       proyectRepo.save(proye);
-      return proye;
     }
+
+    @Override
+    public void editarProyectoFechaRealizacion(Long idProyecto, Date nuevoFecha) {
+    
+     Proyecto proye=proyectRepo.getById(idProyecto);
+      proye.setFechaRealizacion(nuevoFecha);
+      proyectRepo.save(proye);
+    }
+
+    @Override
+    public void editarProyectoDescripcion(Long idProyecto, String nuevaDescripcion) {
+    Proyecto proye=proyectRepo.getById(idProyecto);
+      proye.setDescripcion(nuevaDescripcion);
+      proyectRepo.save(proye);
+    }
+
+    @Override
+    public void editarProyectoUrlProyecto(Long idProyecto, String nuevaUrlProyecto) {
+  Proyecto proye=proyectRepo.getById(idProyecto);
+      proye.setUrlProyecto(nuevaUrlProyecto);
+      proyectRepo.save(proye);
+    
+    }
+
+    @Override
+    public void editarProyectoUrlImagenProyecto(Long idProyecto, String nuevaUrlImagenProyecto) {
+    Proyecto proye=proyectRepo.getById(idProyecto);
+      proye.setUrlImagenProyecto(nuevaUrlImagenProyecto);
+      proyectRepo.save(proye);}
     
 }

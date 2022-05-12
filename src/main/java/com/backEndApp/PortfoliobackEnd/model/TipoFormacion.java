@@ -1,5 +1,6 @@
 package com.backEndApp.PortfoliobackEnd.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,8 +24,10 @@ public class TipoFormacion {
     private String nombreTipoFormacion;
     
     @OneToMany(mappedBy="tipoFormacion")
+   @JsonIgnore
+ 
     private List<Formacion> formaciones=new ArrayList<>();
-    
+      
     public TipoFormacion(){};
     
     public TipoFormacion(Long idTipoFormacion,
@@ -32,6 +35,7 @@ public class TipoFormacion {
                           List<Formacion> formaciones){
     this.idTipoFormacion=idTipoFormacion;
     this.nombreTipoFormacion=nombreTipoFormacion;
+ 
     this.formaciones=formaciones;
     }
     

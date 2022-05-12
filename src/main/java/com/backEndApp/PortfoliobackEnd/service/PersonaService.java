@@ -77,6 +77,14 @@ public class PersonaService implements IPersonaService{
       
         persoRepo.save(perso); }
 
+    @Override
+    public void editPersonaAcercaTexto(Long idPersona, String nuevoAcercaTexto) {
+       Persona perso = persoRepo.getById(idPersona);
+        perso.setAcercaTexto(nuevoAcercaTexto);
+      
+        persoRepo.save(perso);
+    }
+
 
 
 }

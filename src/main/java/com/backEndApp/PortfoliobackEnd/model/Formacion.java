@@ -2,6 +2,7 @@
 package com.backEndApp.PortfoliobackEnd.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,8 +38,11 @@ private Boolean finalizado;//en workbench tinyint ojota
 private TipoFormacion tipoFormacion;
 
 @ManyToOne()
-    @JoinColumn(name="persona_id_persona")
+ 
+@JoinColumn(name="persona_id_persona")
+@JsonIgnore
 private Persona persona;
+
 
 
 public Formacion(){};
@@ -50,7 +54,7 @@ public Formacion(Long idFormacion,
                    Boolean finalizado,
                    TipoFormacion tipoFormacion,
                    Persona persona){
-this.nombreTitulo=nombreInstituto;
+this.nombreTitulo=nombreTitulo;
 this.nombreInstituto=nombreInstituto;
 this.fechaInicio=fechaInicio;
 this.fechaFin=fechaFin;

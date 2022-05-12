@@ -36,27 +36,7 @@ public class ExperienciaService implements IExperienciaService {
 
   
 
-  /*
-    @Override
-    public Experiencia editarBuscarExperiencia(Long idExperiencia, 
-                                              String nuevoPuesto, String nuevoDescripcion, 
-                                              String nuevoEmpresa, String nuevoLogoEmpresa, 
-                                              Date nuevoFechaInicio, Date nuevoFechaFin, 
-                                              TipoExperiencia nuevoTipoExperiencia) {
-      Experiencia expe=expeRepo.getById(idExperiencia);
-       expe.setPuesto(nuevoPuesto);
-       expe.setDescripcion(nuevoDescripcion);
-       expe.setEmpresa(nuevoEmpresa);
-       expe.setLogoEmpresa(nuevoEmpresa);
-       expe.setFechaInicio(nuevoFechaInicio);
-       expe.setFechaFin(nuevoFechaFin);
-       
-       expe.setTipoExperiencia(nuevoTipoExperiencia);
-        expeRepo.save(expe);
-        return expe;
-    }
-*/
-
+  
     @Override
     public void editarExperienciaPuesto(Long idExperiencia, String nuevoPuesto) {
         Experiencia expe=expeRepo.getById(idExperiencia);

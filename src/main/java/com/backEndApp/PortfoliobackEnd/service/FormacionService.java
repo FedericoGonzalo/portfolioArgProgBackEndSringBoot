@@ -2,9 +2,11 @@
 package com.backEndApp.PortfoliobackEnd.service;
 
 import com.backEndApp.PortfoliobackEnd.model.Formacion;
+import com.backEndApp.PortfoliobackEnd.model.TipoFormacion;
 import com.backEndApp.PortfoliobackEnd.repository.FormacionRepository;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,15 +38,57 @@ public class FormacionService implements IFormacionService {
     }
 
     @Override
-    public Formacion editarFormacion(Long idFormacion, String nuevoNombreTitulo, String nuevoNombreInstituto, Date nuevoFechaInicio, Date nuevoFechaFin, Boolean nuevoFinalizado) {
-        Formacion forma=formaRepo.getById(idFormacion);
+    public void editarFormacionNombreTitulo(Long idFormacion, String nuevoNombreTitulo) {
+     Formacion forma= formaRepo.getById(idFormacion);
         forma.setNombreTitulo(nuevoNombreTitulo);
-        forma.setNombreInstituto(nuevoNombreInstituto);
-        forma.setFechaInicio(nuevoFechaInicio);
-        forma.setFechaFin(nuevoFechaFin);
-        forma.setFinalizado(nuevoFinalizado);
-        formaRepo.save(forma);
-        return forma ;
+         formaRepo.save(forma);
+        ;
+     
     }
+
+    /*
+     Experiencia expe=expeRepo.getById(idExperiencia);
+         expe.setTipoExperiencia(nuevoTipoExperiencia);
+         expeRepo.save(expe);
+    */
+    
+    
+    
+    @Override
+    public void editarFormacionNombreInstituto(Long idFormacion, String nuevoNombreInstituto) {
+    Formacion forma= formaRepo.getById(idFormacion);
+        forma.setNombreInstituto(nuevoNombreInstituto);
+         formaRepo.save(forma); 
+    }
+
+    @Override
+    public void editarFormacionFechaInicio(Long idFormacion, Date nuevoFechaInicio) {
+    Formacion forma= formaRepo.getById(idFormacion);
+        forma.setFechaInicio(nuevoFechaInicio);
+         formaRepo.save(forma);
+    }
+
+    @Override
+    public void editarFormacionFechaFin(Long idFormacion, Date nuevoFechaFin) {
+    Formacion forma= formaRepo.getById(idFormacion);
+        forma.setFechaFin(nuevoFechaFin);
+         formaRepo.save(forma);
+    }
+
+    @Override
+    public void editarFormacionFinalizado(Long idFormacion, Boolean nuevoFinalizado) {
+    Formacion forma= formaRepo.getById(idFormacion);
+        forma.setFinalizado(nuevoFinalizado);
+         formaRepo.save(forma);
+    }
+
+    @Override
+    public void editarFormacionTipoForm(Long idFormacion, TipoFormacion nuevoTipoFormacion) {
+    Formacion forma= formaRepo.getById(idFormacion);
+        forma.setTipoFormacion(nuevoTipoFormacion);
+         formaRepo.save(forma);
+    }
+
+   
     
 }

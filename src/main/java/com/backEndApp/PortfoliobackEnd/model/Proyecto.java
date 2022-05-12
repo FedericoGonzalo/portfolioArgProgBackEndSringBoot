@@ -2,6 +2,7 @@
 package com.backEndApp.PortfoliobackEnd.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,7 @@ public class Proyecto {
     
     @ManyToOne
     @JoinColumn(name="persona_id_persona")
+   @JsonIgnore
     private Persona persona;
     
     

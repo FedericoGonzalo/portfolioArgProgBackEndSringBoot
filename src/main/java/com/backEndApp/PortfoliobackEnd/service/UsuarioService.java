@@ -18,6 +18,47 @@ public class UsuarioService {
 
     @Autowired
     UsuarioRepository usuarioRepository;
+    
+    //
+    
+   public Optional<Usuario> getById(Long id){
+   return usuarioRepository.findById(id);} ;
+   
+    public void borrar(Long id){
+        usuarioRepository.deleteById(id);
+    }
+    public void cambiarNombre(Long id,String nuevoNombre){
+      Usuario user=  usuarioRepository.getById(id);
+      user.setNombre(nuevoNombre);
+      usuarioRepository.save(user);
+    }
+    public void cambiarMail(Long id,String nuevoMail){
+    Usuario user=    usuarioRepository.getById(id);
+    user.setEmail(nuevoMail);
+      usuarioRepository.save(user);
+    }
+    public void cambiarPassword(Long id,String nuevoPassword){
+     Usuario user=   usuarioRepository.getById(id);
+    user.setPassword(nuevoPassword);
+      usuarioRepository.save(user);
+    }
+    public void cambiarApellido(Long id,String nuevoApellido){
+     Usuario user=   usuarioRepository.getById(id);
+    user.setNombre(nuevoApellido);
+      usuarioRepository.save(user);
+    }
+    
+    
+    
+
+
+
+
+
+//
+    
+    
+    
 
     public Optional<Usuario> getByNombreUsuario(String nu){
         return usuarioRepository.findByNombreUsuario(nu);

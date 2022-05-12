@@ -6,12 +6,15 @@ import java.util.List;
 
 
 public interface ISkillService {
-    public List<Skill> verExperiencias();
+     public List<Skill> verSkills();
+
     public void agregarSkill(Skill newSkill);
     public void borrarSkill(Long idSkill);
     public Skill buscarSkill(Long idSkill);
-    public Skill editarSkill(Long idSkill,
-                             Long nuevoPorcentajeSkill,
+    public void editarSkillNombre(Long idSkill,
+                             
                              String nuevoNombreSkill );
+    public void editarSkillPorcentaje(Long idSkill,
+                             Long nuevoPorcentajeSkill );
            
 }

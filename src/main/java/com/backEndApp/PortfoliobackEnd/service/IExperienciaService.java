@@ -12,16 +12,7 @@ public interface IExperienciaService  {
     public void agregarExperiencia (Experiencia expe);
     public void borrarExperiencia  (Long idExperiencia);
     public Experiencia buscarExperiencia(Long idExperiencia);
-  /*  //Estoy Probando 
-    public Experiencia editarExperiencia(Long idExperiencia,
-            String nuevoPuesto,
-            String nuevoDescripcion,
-            String nuevoEmpresa,
-            String nuevoLogoEmpresa,
-            Date nuevoFechaInicio,
-            Date nuevoFechaFin,
-            TipoExperiencia nuevoTipoExperiencia);
-    */
+ 
    public void editarExperienciaPuesto(Long idExperiencia, String nuevoPuesto);
    public void editarExperienciaDescripcion(Long idExperiencia,String nuevoDescripcion);
    public void editarExperienciaEmpresa(Long idExperiencia,String nuevoEmpresa);

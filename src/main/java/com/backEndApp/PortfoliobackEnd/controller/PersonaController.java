@@ -5,9 +5,13 @@
 package com.backEndApp.PortfoliobackEnd.controller;
 
 import com.backEndApp.PortfoliobackEnd.model.AcercaPersona;
+import com.backEndApp.PortfoliobackEnd.model.Experiencia;
 import com.backEndApp.PortfoliobackEnd.model.Persona;
+import com.backEndApp.PortfoliobackEnd.model.TipoExperiencia;
 import com.backEndApp.PortfoliobackEnd.service.IAcercaPersonaService;
+import com.backEndApp.PortfoliobackEnd.service.IExperienciaService;
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
+import com.backEndApp.PortfoliobackEnd.service.ITipoExperienciaService;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,17 +75,48 @@ import org.springframework.web.bind.annotation.RestController;
      public void editPersonaNombre(@PathVariable Long idPersona,@RequestParam ("nombre")String nuevoNombre){
       iPersona.editPersonaNombre(idPersona, nuevoNombre);
         };
+    
      @PutMapping("/persona/editar/{idPersona}/apellido")
      public void editPersonaApellido(@PathVariable Long idPersona,@RequestParam ("apellido")String nuevoApellido){
          iPersona.editPersonaApellido(idPersona, nuevoApellido);};
+    
      @PutMapping("/persona/editar/{idPersona}/nac")
      public void editPersonaNacimiento(@PathVariable Long idPersona,@RequestParam ("nacimiento")Date nuevoNacimiento){
          iPersona.editPersonaNacimiento(idPersona, nuevoNacimiento);};
+    
      @PutMapping("/persona/editar/{idPersona}/foto")
      public void editPersonaFotoUrl(@PathVariable Long idPersona,@RequestParam ("fotoUrl")String nuevaFotoUrl){iPersona.editPersonaFoto(idPersona, nuevaFotoUrl);};
+    
      @PutMapping("/persona/editar/{idPersona}/img")
      public void editPersonaImgUrl(@PathVariable Long idPersona,@RequestParam ("imgUrl") String nuevaImgHeader){ 
               iPersona.editPersonaImg(idPersona, nuevaImgHeader);};
+    @PutMapping("/persona/editar/{idPersona}/acercaTxt")
+     public void editPersonaAcercaTexto(@PathVariable Long idPersona,@RequestParam ("acercaTexto") String nuevoAcercaTexto){ 
+              iPersona.editPersonaImg(idPersona, nuevoAcercaTexto);};
     
+
+  
+     
+       //**********Acerca De******************////
+   
+  
+  /*  ///No usar,se crea con creacion de usuario///
+@PostMapping("/persona/ver/{idPersona}/acercaPersona")
+     public void agregarAcerca(@PathVariable Long idPersona,
+                                @RequestBody AcercaPersona acerPer){
+         Persona persona=iPersona.buscarPersona(idPersona);
+         acerPer.setPersona(persona);
+         iAcerca.crearAcercaPersona(acerPer); };  */
+
+   
+     
     
-}
+    @PostMapping("/persona/ver/{idPersona}/edit/AcercaPersona")
+     public void cambiarTextoAcerPers(@PathVariable Long idPersona,
+                                       @RequestParam("textoAcerca") String nuevoTextoAcerca){
+       
+         iAcerca.editarAcercaPersona((idPersona+1),  nuevoTextoAcerca);
+    
+     }
+ 
+ }

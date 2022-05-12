@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SkillService implements ISkillService {
-     @Autowired
+       @Autowired
      public SkillRepository skillRepo;
 
     @Override
-    public List<Skill> verExperiencias() {
+    public List<Skill> verSkills() {
         return skillRepo.findAll();
     }
 
@@ -33,14 +33,23 @@ public class SkillService implements ISkillService {
         
     }
 
+
+
     @Override
-    public Skill editarSkill(Long idSkill, Long nuevoPorcentajeSkill, String nuevoNombreSkill) {
-        Skill eSkill=skillRepo.getById(idSkill);
-        eSkill.setPorcentajeSkill(nuevoPorcentajeSkill);
+    public void editarSkillNombre(Long idSkill, String nuevoNombreSkill) {
+    Skill eSkill=skillRepo.getById(idSkill);
+        
         eSkill.setNombreSkill(nuevoNombreSkill);
         skillRepo.save(eSkill);
+    
+    };
+
+    @Override
+    public void editarSkillPorcentaje(Long idSkill, Long nuevoPorcentajeSkill) {
+    Skill eSkill=skillRepo.getById(idSkill);
+        eSkill.setPorcentajeSkill(nuevoPorcentajeSkill);
        
-        return eSkill ;
-    }
+        skillRepo.save(eSkill);
+    };
     
 }
