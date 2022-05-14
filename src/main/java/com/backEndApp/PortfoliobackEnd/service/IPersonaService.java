@@ -13,7 +13,7 @@ public interface IPersonaService {
    public void borrarPersona (Long idPersona);
    public void editPersonaNombre(Long idPersona,String nuevoNombre);
    public void editPersonaApellido(Long idPersona,String nuevoApellido);
-   
+   public void editPersonaResidencia(Long idPersona,String nuevaResidencia);
    public void editPersonaNacimiento(Long idPersona,Date nuevoNacimiento);
    public void editPersonaFoto(Long idPersona,String nuevaFotoUrl);
    public void editPersonaImg(Long idPersona,String nuevaImgHeaderUrl);

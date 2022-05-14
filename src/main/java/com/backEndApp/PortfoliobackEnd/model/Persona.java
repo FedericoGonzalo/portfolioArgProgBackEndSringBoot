@@ -29,7 +29,7 @@ public class Persona {
     private Long idPersona;
     private String nombre;
     private String apellido;
-   
+    private String residencia="Alguna Ciudad";
    
     
    
@@ -82,7 +82,7 @@ public class Persona {
                 String fotoUrl,
                 String imgHeaderUrl,
                   String acercaTexto,
-                
+                String residencia,
                 
                 
                   
@@ -96,13 +96,13 @@ public class Persona {
         this.idPersona = idPersona;
         this.nombre= nombre;
         this.apellido=apellido;
-       
+       this.residencia=residencia;
         this.nacimiento=nacimiento;
         this.fotoUrl=fotoUrl;
         this.imgHeaderUrl=imgHeaderUrl;
         this.acercaTexto=acercaTexto;
         
-        this.acercaPersona=acercaPersona;
+      
         
         this.proyectos=proyectos;
         this.skills=skills;
