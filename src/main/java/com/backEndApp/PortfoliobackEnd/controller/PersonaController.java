@@ -97,6 +97,10 @@ import org.springframework.web.bind.annotation.RestController;
      @PutMapping("/persona/editar/{idPersona}/residencia")
      public void editPersonaResidencia(@PathVariable Long idPersona,@RequestParam ("residencia") String nuevaResidencia){ 
               iPersona.editPersonaResidencia(idPersona, nuevaResidencia);};
+     
+     @PutMapping("/persona/editar/{idPersona}/urlresidencia")
+     public void editPersonaUrlResidencia(@PathVariable Long idPersona,@RequestParam ("urlResidencia") String nuevaUrlResidencia){ 
+              iPersona.editPersonaUrlResidencia(idPersona, nuevaUrlResidencia);};
     
 
   

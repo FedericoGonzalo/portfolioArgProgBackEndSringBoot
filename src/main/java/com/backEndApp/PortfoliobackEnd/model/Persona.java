@@ -30,6 +30,7 @@ public class Persona {
     private String nombre;
     private String apellido;
     private String residencia="Alguna Ciudad";
+    private String urlResidencia="https://www.google.com/maps/@-34.6154234,-58.5733841,11z";
    
     
    
@@ -83,7 +84,7 @@ public class Persona {
                 String imgHeaderUrl,
                   String acercaTexto,
                 String residencia,
-                
+                String urlResidencia,
                 
                   
                   
@@ -97,6 +98,7 @@ public class Persona {
         this.nombre= nombre;
         this.apellido=apellido;
        this.residencia=residencia;
+       this.urlResidencia=urlResidencia;
         this.nacimiento=nacimiento;
         this.fotoUrl=fotoUrl;
         this.imgHeaderUrl=imgHeaderUrl;

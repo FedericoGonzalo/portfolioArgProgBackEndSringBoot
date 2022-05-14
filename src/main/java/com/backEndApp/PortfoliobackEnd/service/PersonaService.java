@@ -92,6 +92,13 @@ public class PersonaService implements IPersonaService{
          persoRepo.save(perso);
     }
 
+    @Override
+    public void editPersonaUrlResidencia(Long idPersona, String nuevaUrlResidencia) {
+          Persona perso=persoRepo.getById(idPersona);
+          perso.setUrlResidencia(nuevaUrlResidencia);
+          persoRepo.save(perso);
+    }
+
 
 
 }
