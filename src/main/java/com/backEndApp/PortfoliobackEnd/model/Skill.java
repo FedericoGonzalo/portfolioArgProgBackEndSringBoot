@@ -25,20 +25,17 @@ public class Skill {
     @JoinColumn(name="persona_id_persona")
  
     private Persona persona;
-    @ManyToOne()
-    @JoinColumn(name="tipo_skill_id_tipo_skill")
-    private TipoSkill tipoSkill;
-    
+   
    
     
     public Skill (){};
     public Skill (Long idSkill,Long porcentajeSkill,
-            String nombreSkill,TipoSkill tipoSkill,
+            String nombreSkill,
             Persona persona){
     this.idSkill=idSkill;
     this.porcentajeSkill=porcentajeSkill;
     this.nombreSkill=nombreSkill;
-    this.tipoSkill=tipoSkill;
+ 
     this.persona=persona;
     };
 

@@ -2,7 +2,7 @@
 package com.backEndApp.PortfoliobackEnd.service;
 
 import com.backEndApp.PortfoliobackEnd.model.Formacion;
-import com.backEndApp.PortfoliobackEnd.model.TipoFormacion;
+
 import com.backEndApp.PortfoliobackEnd.repository.FormacionRepository;
 import java.util.Date;
 import java.util.List;
@@ -82,12 +82,7 @@ public class FormacionService implements IFormacionService {
          formaRepo.save(forma);
     }
 
-    @Override
-    public void editarFormacionTipoForm(Long idFormacion, TipoFormacion nuevoTipoFormacion) {
-    Formacion forma= formaRepo.getById(idFormacion);
-        forma.setTipoFormacion(nuevoTipoFormacion);
-         formaRepo.save(forma);
-    }
+    
 
    
     

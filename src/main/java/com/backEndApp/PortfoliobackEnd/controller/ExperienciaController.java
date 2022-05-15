@@ -6,10 +6,10 @@ package com.backEndApp.PortfoliobackEnd.controller;
 
 import com.backEndApp.PortfoliobackEnd.model.Experiencia;
 import com.backEndApp.PortfoliobackEnd.model.Persona;
-import com.backEndApp.PortfoliobackEnd.model.TipoExperiencia;
+
 import com.backEndApp.PortfoliobackEnd.service.IExperienciaService;
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
-import com.backEndApp.PortfoliobackEnd.service.ITipoExperienciaService;
+
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +30,7 @@ public class ExperienciaController {
      //******************/iExperiencia******************///////
       @Autowired
     private IPersonaService iPersona;
-    @Autowired
-    private ITipoExperienciaService iTipoExpe;
+ 
     
     @Autowired
      private IExperienciaService iExpe;
@@ -40,11 +39,11 @@ public class ExperienciaController {
      @PostMapping("/persona/ver/{idPersona}/newExperiencia")
      public void agregarExpPerso(
                                 @PathVariable Long idPersona,
-                                @RequestParam("tipoExperiencia")Long idTipoExperiencia,
+                            
                                 @RequestBody Experiencia expe ){
  
       expe.setPersona(iPersona.buscarPersona(idPersona));
-        expe.setTipoExperiencia(iTipoExpe.buscarTipoExperiencia(idTipoExperiencia));
+       
         iExpe.agregarExperiencia(expe);
      };
      @GetMapping("/persona/ver/{idPersona}/listExperiencia")
@@ -101,15 +100,9 @@ public class ExperienciaController {
      //con este
     
      //
-     @PostMapping("/persona/ver/{idExperiencia}/TipoExpe")
+   
        
-     public void editarTipoExpe( 
-                                @RequestParam("tipoExperiencia") Long idTipoExperiencia,
-                                @PathVariable Long idExperiencia
-                            ){
-         TipoExperiencia nuevoTipoExperiencia=iTipoExpe.buscarTipoExperiencia(idTipoExperiencia);
-         iExpe.editarExperienciaTipoExpe(idExperiencia, nuevoTipoExperiencia);
-       };
+    
      
     
 }

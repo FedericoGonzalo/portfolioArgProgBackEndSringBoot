@@ -5,13 +5,9 @@
 package com.backEndApp.PortfoliobackEnd.controller;
 
 import com.backEndApp.PortfoliobackEnd.model.AcercaPersona;
-import com.backEndApp.PortfoliobackEnd.model.Experiencia;
 import com.backEndApp.PortfoliobackEnd.model.Persona;
-import com.backEndApp.PortfoliobackEnd.model.TipoExperiencia;
 import com.backEndApp.PortfoliobackEnd.service.IAcercaPersonaService;
-import com.backEndApp.PortfoliobackEnd.service.IExperienciaService;
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
-import com.backEndApp.PortfoliobackEnd.service.ITipoExperienciaService;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

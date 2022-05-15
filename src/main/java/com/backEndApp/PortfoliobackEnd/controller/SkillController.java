@@ -7,7 +7,7 @@ package com.backEndApp.PortfoliobackEnd.controller;
 import com.backEndApp.PortfoliobackEnd.model.Skill;
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
 import com.backEndApp.PortfoliobackEnd.service.ISkillService;
-import com.backEndApp.PortfoliobackEnd.service.ITipoSkillService;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,21 +34,20 @@ public class SkillController {
      //*************iSkill****************************    
       @Autowired
      private ISkillService iSkill;
-       @Autowired
-     private ITipoSkillService iTipoSkill;
+
        @Autowired
     private IPersonaService iPersona;
       
      @PostMapping("/persona/ver/{idPersona}/newSkill")
      public void crearSkill(@PathVariable Long idPersona,
-                           @RequestParam("idTipoSkill") Long idTipoSkill,
+                           
                            @RequestParam("nombreSkill") String nombreSkill,
                            @RequestParam("porcentajeSkill")Long porcentajeSkill
                              ){
         
          Skill newSkill=new Skill();
          newSkill.setPersona(iPersona.buscarPersona(idPersona));
-         newSkill.setTipoSkill(iTipoSkill.buscarTipoSkill(idTipoSkill));
+       
          newSkill.setNombreSkill(nombreSkill);
          newSkill.setPorcentajeSkill(porcentajeSkill);
          iSkill.agregarSkill(newSkill);

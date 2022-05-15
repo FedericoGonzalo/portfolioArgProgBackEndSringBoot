@@ -2,7 +2,7 @@
 package com.backEndApp.PortfoliobackEnd.service;
 
 import com.backEndApp.PortfoliobackEnd.model.Experiencia;
-import com.backEndApp.PortfoliobackEnd.model.TipoExperiencia;
+
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +19,7 @@ public interface IExperienciaService  {
    public void editarExperienciaLogoEmp(Long idExperiencia,String nuevoLogoEmpresa);
    public void editarExperienciaFechaInicio(Long idExperiencia, Date nuevoFechaInicio);
    public void editarExperienciaFechaFin(Long idExperiencia, Date nuevoFechaFin);
-   public void editarExperienciaTipoExpe(Long idExperiencia, TipoExperiencia nuevoTipoExperiencia);
+
    
    
                                               

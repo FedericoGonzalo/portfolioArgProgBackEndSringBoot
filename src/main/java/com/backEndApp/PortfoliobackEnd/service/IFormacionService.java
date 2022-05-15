@@ -2,7 +2,7 @@
 package com.backEndApp.PortfoliobackEnd.service;
 
 import com.backEndApp.PortfoliobackEnd.model.Formacion;
-import com.backEndApp.PortfoliobackEnd.model.TipoFormacion;
+
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +23,5 @@ public interface IFormacionService {
                                    );
      public void editarFormacionFinalizado(Long idFormacion, Boolean nuevoFinalizado
                                    );
-     public void editarFormacionTipoForm(Long idFormacion, TipoFormacion nuevoTipoFormacion
-                                   );
+
 }

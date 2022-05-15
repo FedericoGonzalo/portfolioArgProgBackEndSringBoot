@@ -13,10 +13,10 @@ package com.backEndApp.PortfoliobackEnd.controller;
 
 import com.backEndApp.PortfoliobackEnd.model.Formacion;
 import com.backEndApp.PortfoliobackEnd.model.Persona;
-import com.backEndApp.PortfoliobackEnd.model.TipoFormacion;
+
 import com.backEndApp.PortfoliobackEnd.service.IFormacionService;
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
-import com.backEndApp.PortfoliobackEnd.service.ITipoFormacionService;
+
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +41,7 @@ public class FormacionController {
      @Autowired
      private IFormacionService iFormacion;
     
-     @Autowired
-     private ITipoFormacionService iTipoForma;
+
      @Autowired
     private IPersonaService iPersona;
      
@@ -52,10 +51,10 @@ public class FormacionController {
                                    @RequestParam ("tipoFormacion")Long idTipoFormacion,
                                    @RequestBody Formacion nuevaFormacion){
             Persona perso=iPersona.buscarPersona(idPersona);
-            TipoFormacion forma=iTipoForma.buscarTipoFormacion(idTipoFormacion);
+        
           
             nuevaFormacion.setPersona(perso);
-            nuevaFormacion.setTipoFormacion(forma);
+          
             iFormacion.agregarFormacion(nuevaFormacion);
      };
     

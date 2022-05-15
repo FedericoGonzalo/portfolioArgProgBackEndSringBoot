@@ -6,10 +6,10 @@ package com.backEndApp.PortfoliobackEnd.controller;
 
 import com.backEndApp.PortfoliobackEnd.model.Persona;
 import com.backEndApp.PortfoliobackEnd.model.RedSocial;
-import com.backEndApp.PortfoliobackEnd.model.TipoRedSocial;
+
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
 import com.backEndApp.PortfoliobackEnd.service.IRedSocialService;
-import com.backEndApp.PortfoliobackEnd.service.ITipoRedSocialService;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,21 +35,20 @@ public class RedSocialController {
      //********iRedSocial********
     @Autowired
     private IRedSocialService iRedSocial;
-    @Autowired
-    private ITipoRedSocialService iTipoRedSoc;
+
      @Autowired
     private IPersonaService iPersona;
      
     @PostMapping ("/personas/ver/{idPersona}/newRedSocial")
     public void newRedSocial(@PathVariable Long idPersona,
-                                   @RequestParam("tipoRedSocial") Long idTipoRedSocial,
+                                   
                                      @RequestParam("urlRedSocial") String urlRedSocial){
           RedSocial redSoc = new RedSocial();
           Persona perso=iPersona.buscarPersona(idPersona); 
-          TipoRedSocial tipRed=iTipoRedSoc.buscarTipoRedSocial(idTipoRedSocial);
+          
           redSoc.setPersona(perso);
           redSoc.setUrlRedSocial(urlRedSocial);
-          redSoc.setTipoRedSocial(tipRed);
+     
           iRedSocial.agregarRedSocial(redSoc);
     };
     @DeleteMapping ("/personas/ver/delRedSocial")

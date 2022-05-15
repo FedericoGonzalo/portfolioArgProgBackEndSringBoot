@@ -2,7 +2,7 @@ package com.backEndApp.PortfoliobackEnd.service;
 
 
 import com.backEndApp.PortfoliobackEnd.model.Experiencia;
-import com.backEndApp.PortfoliobackEnd.model.TipoExperiencia;
+
 import com.backEndApp.PortfoliobackEnd.repository.ExperienciaRepository;
 import java.util.Date;
 import java.util.List;
@@ -79,11 +79,6 @@ public class ExperienciaService implements IExperienciaService {
          expeRepo.save(expe);   
     }
 
-    @Override
-    public void editarExperienciaTipoExpe(Long idExperiencia, TipoExperiencia nuevoTipoExperiencia) {
-      Experiencia expe=expeRepo.getById(idExperiencia);
-         expe.setTipoExperiencia(nuevoTipoExperiencia);
-         expeRepo.save(expe);
-    }
+   
 
 }

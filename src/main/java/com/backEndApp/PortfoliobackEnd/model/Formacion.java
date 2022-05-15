@@ -33,9 +33,7 @@ private Date fechaInicio;
 private Date fechaFin;
 private Boolean finalizado;//en workbench tinyint ojota
 
-@ManyToOne()
-@JoinColumn(name="tipo_formacion_id_tipo_formacion")
-private TipoFormacion tipoFormacion;
+
 
 @ManyToOne()
  
@@ -52,13 +50,13 @@ public Formacion(Long idFormacion,
                    Date fechaInicio,
                    Date fechaFin,
                    Boolean finalizado,
-                   TipoFormacion tipoFormacion,
+                  
                    Persona persona){
 this.nombreTitulo=nombreTitulo;
 this.nombreInstituto=nombreInstituto;
 this.fechaInicio=fechaInicio;
 this.fechaFin=fechaFin;
 this.finalizado=finalizado;
-this.tipoFormacion=tipoFormacion;
+
 this.persona=persona;};
 }

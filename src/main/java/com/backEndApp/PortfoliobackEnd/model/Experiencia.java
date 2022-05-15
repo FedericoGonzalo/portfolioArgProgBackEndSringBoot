@@ -1,6 +1,4 @@
 package com.backEndApp.PortfoliobackEnd.model;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -14,7 +12,6 @@ import javax.persistence.Temporal;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity 
 @Getter
@@ -39,10 +36,6 @@ public class Experiencia {
     
     
   
-    @ManyToOne()
-    @JoinColumn(name="tipo_experiencia_id_tipo_experiencia")
-  
-    private TipoExperiencia tipoExperiencia;
    
  
    @ManyToOne()
@@ -60,7 +53,7 @@ public class Experiencia {
             String logoEmpresa,
             Date fechaInicio,
             Date fechaFin,
-            TipoExperiencia tipoExperiencia,
+        
             Persona persona){
     this.idExperiencia=idExperiencia;
     this.puesto=puesto;
@@ -69,7 +62,7 @@ public class Experiencia {
     this.logoEmpresa=logoEmpresa;
     this.fechaInicio=fechaInicio;
     this.fechaFin=fechaFin;
-    this.tipoExperiencia=tipoExperiencia;
+  
     this.persona=persona;
     
   
