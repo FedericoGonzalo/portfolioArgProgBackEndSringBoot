@@ -12,35 +12,38 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ *
+ * @author BASSTARD
+ */
+
 @Entity
 @Getter
 @Setter
 @Table
-public class Skill {
-    @Id
+public class HardSkill {
+      @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idSkill;
-   
-    private String nombreSkill;
+    private Long idHardSkill;
+    private Long porcentajeHardSkill;
+    private String nombreHardSkill;
     @ManyToOne()
     @JoinColumn(name="persona_id_persona")
-  @JsonIgnore
+ @JsonIgnore
     private Persona persona;
    
    
     
-    public Skill (){};
-    public Skill (Long idSkill,Long porcentajeSkill,
-            String nombreSkill,
+    public HardSkill (){};
+    public HardSkill (Long idHardSkill,Long porcentajeHardSkill,
+            String nombreHardSkill,
             Persona persona){
-    this.idSkill=idSkill;
-    
-    this.nombreSkill=nombreSkill;
+    this.idHardSkill=idHardSkill;
+    this.porcentajeHardSkill=porcentajeHardSkill;
+    this.nombreHardSkill=nombreHardSkill;
  
     this.persona=persona;
-    };
+}
 
-   
-            
-    
+  
 }

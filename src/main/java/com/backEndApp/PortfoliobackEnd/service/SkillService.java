@@ -44,12 +44,5 @@ public class SkillService implements ISkillService {
     
     };
 
-    @Override
-    public void editarSkillPorcentaje(Long idSkill, Long nuevoPorcentajeSkill) {
-    Skill eSkill=skillRepo.getById(idSkill);
-        eSkill.setPorcentajeSkill(nuevoPorcentajeSkill);
-       
-        skillRepo.save(eSkill);
-    };
-    
 }
+    

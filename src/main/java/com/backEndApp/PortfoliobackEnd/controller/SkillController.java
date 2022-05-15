@@ -41,15 +41,15 @@ public class SkillController {
      @PostMapping("/persona/ver/{idPersona}/newSkill")
      public void crearSkill(@PathVariable Long idPersona,
                            
-                           @RequestParam("nombreSkill") String nombreSkill,
-                           @RequestParam("porcentajeSkill")Long porcentajeSkill
+                           @RequestParam("nombreSkill") String nombreSkill
+                           
                              ){
         
          Skill newSkill=new Skill();
          newSkill.setPersona(iPersona.buscarPersona(idPersona));
        
          newSkill.setNombreSkill(nombreSkill);
-         newSkill.setPorcentajeSkill(porcentajeSkill);
+        
          iSkill.agregarSkill(newSkill);
      };
       
@@ -63,11 +63,7 @@ public class SkillController {
                                @RequestParam("newNombre")String newNombre ){
             iSkill.editarSkillNombre(idSkill, newNombre);
         };
-      @PutMapping("/persona/ver/edit/porcentajeSkill") 
-       public void editSkillPorcentaje(@RequestParam("idSkill")Long idSkill, 
-                                      @RequestParam("newPorcentaje")Long nuevoPorcentaje ){
-       iSkill.editarSkillPorcentaje(idSkill, nuevoPorcentaje);
-       }; 
+      
        //aca abajo prueba para mandar listas skill pero por tipo(hard,soft,language)
      
        

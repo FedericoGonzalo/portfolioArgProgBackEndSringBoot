@@ -14,7 +14,6 @@ public interface ISkillService {
     public void editarSkillNombre(Long idSkill,
                              
                              String nuevoNombreSkill );
-    public void editarSkillPorcentaje(Long idSkill,
-                             Long nuevoPorcentajeSkill );
+   
            
 }

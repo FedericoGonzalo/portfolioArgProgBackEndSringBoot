@@ -56,6 +56,9 @@ public class Persona {
    
    @OneToMany(mappedBy="persona",orphanRemoval = true,cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private List<Skill> skills=new ArrayList<>();
+   
+    @OneToMany(mappedBy="persona",orphanRemoval = true,cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+    private List<HardSkill> hardSkills=new ArrayList<>();
     
 
   
@@ -90,6 +93,7 @@ public class Persona {
                   
                   List<Proyecto> proyectos,
                   List<Skill> skills,
+                  List<HardSkill> hardSkills,
                   List<Experiencia> experiencias,
                   List<Formacion> formaciones,
                   List<RedSocial> redesSociales
@@ -108,6 +112,7 @@ public class Persona {
         
         this.proyectos=proyectos;
         this.skills=skills;
+        this.hardSkills=hardSkills;
         this.experiencias=experiencias;
         this.formaciones=formaciones;
         this.redesSociales=redesSociales;

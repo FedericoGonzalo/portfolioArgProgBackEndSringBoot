@@ -48,7 +48,7 @@ public class FormacionController {
      
      @PostMapping ("/persona/ver/{idPersona}/newFormacion")
      public void agregarFormacion(@PathVariable Long idPersona,
-                                   @RequestParam ("tipoFormacion")Long idTipoFormacion,
+                                   
                                    @RequestBody Formacion nuevaFormacion){
             Persona perso=iPersona.buscarPersona(idPersona);
         
