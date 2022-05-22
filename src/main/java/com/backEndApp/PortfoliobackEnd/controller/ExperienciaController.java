@@ -56,7 +56,7 @@ public class ExperienciaController {
        };
     
      
-@DeleteMapping("/persona/ver/{idExperiencia}/delExp")
+@DeleteMapping("/persona/ver/delExp/{idExperiencia}")
     public void borrarExpe(@PathVariable Long idExperiencia){
     iExpe.borrarExperiencia(idExperiencia);
     };

@@ -51,8 +51,8 @@ public class SkillController {
          iSkill.agregarSkill(skill);
      };
       
-      @DeleteMapping("/persona/ver/delSkill")
-         public void borrar(@RequestParam("idSkill")Long idSkill){
+      @DeleteMapping("/persona/ver/delSkill/{idSkill}")
+         public void borrar(@PathVariable Long idSkill){
          iSkill.borrarSkill(idSkill);
          }; 
         

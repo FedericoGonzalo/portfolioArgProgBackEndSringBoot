@@ -44,8 +44,8 @@ public class HardSkillController {
     
     };
     
-    @DeleteMapping("/persona/ver/delHSkill")
-         public void borrar(@RequestParam("idHardSkill")Long idHardSkill){
+    @DeleteMapping("/persona/ver/delHSkill/{idHardSkill}")
+         public void borrar(@PathVariable Long idHardSkill){
          iHSkill.borrarHardSkill(idHardSkill);
          }; 
     

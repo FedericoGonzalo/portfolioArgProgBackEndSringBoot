@@ -58,8 +58,8 @@ public class FormacionController {
             iFormacion.agregarFormacion(nuevaFormacion);
      };
     
-     @DeleteMapping ("/persona/ver/delFormacion")
-     public void borrarFormacion(@RequestParam("idFormacion")Long idFormacion){
+     @DeleteMapping ("/persona/ver/delFormacion/{idFormacion}")
+     public void borrarFormacion(@PathVariable Long idFormacion){
             iFormacion.borrarFormacion(idFormacion);
      };
      

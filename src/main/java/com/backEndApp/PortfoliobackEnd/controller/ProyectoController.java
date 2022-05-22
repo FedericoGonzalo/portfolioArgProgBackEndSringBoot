@@ -47,8 +47,8 @@ public class ProyectoController {
        nuevoProyecto.setPersona(per);
         iProyecto.agregarProyecto(nuevoProyecto);
     }; 
-    @DeleteMapping("/personas/ver/delProyecto")
-    public void borrarProyecto(@RequestParam("idProyecto")Long idProyecto){
+    @DeleteMapping("/personas/ver/delProyecto/{idProyecto}")
+    public void borrarProyecto(@PathVariable Long idProyecto){
     iProyecto.borrarProyecto(idProyecto);
     };
     
