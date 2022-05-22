@@ -72,40 +72,12 @@ public class FormacionController {
                return persoFormacion;
       };
 
-     @PutMapping ("/persona/ver/formacion/edit/titulo")
-     public void cambiarFormacionTitulo(@RequestParam("idFormacion")Long idFormacion,
-                               @RequestParam("nuevoTitulo")String nuevoTitulo){
-         
-         iFormacion.editarFormacionNombreTitulo(idFormacion, nuevoTitulo);     
-     };
-      @PutMapping ("/persona/ver/{idPersona}/formacion/edit/nombreInstituto")
-      public void cambiarFormacionNombreInst(@RequestParam("idFormacion")Long idFormacion,
-                               @RequestParam("nuevoInstituto")String nuevoInst){
-               iFormacion.editarFormacionNombreInstituto(idFormacion, nuevoInst);
+      @PutMapping("/persona/ver/{idPersona}/listFormacion")
+      public void editarFormacion(@PathVariable Long idPersona,
+                                   @RequestBody Formacion formacion){
+         formacion.setPersona(iPersona.buscarPersona(idPersona));
+         iFormacion.editarFormacion(formacion);
+      
       };
-      @PutMapping ("/persona/ver/{idPersona}/formacion/edit/FechaInicio")
-       public void cambiarFormacionFechaInicio(@RequestParam("idFormacion")Long idFormacion,
-                               @RequestParam("nuevaFechaInicio")Date nuevoFechaInicio){
-              iFormacion.editarFormacionFechaInicio(idFormacion, nuevoFechaInicio);
-       };
-       
-       @PutMapping ("/persona/ver/{idPersona}/formacion/edit/FechaFin")
-       public void cambiarFormacionFechaFin(@RequestParam("idFormacion")Long idFormacion,
-                               @RequestParam("nuevaFechaFin")Date nuevoFechaFin){
-              iFormacion.editarFormacionFechaFin(idFormacion, nuevoFechaFin);
-       };
-       
-        @PutMapping ("/persona/ver/{idPersona}/formacion/edit/finalizado")
-        public void cambiarFormacionFinalizado(@RequestParam("idFormacion")Long idFormacion,
-                               @RequestParam("nuevoFinalizado") Boolean nuevoFinalizado){
-        
-                 iFormacion.editarFormacionFinalizado(idFormacion, nuevoFinalizado);
-        };
-       
-       
-
-
-
-
-
+ 
 }

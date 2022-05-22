@@ -11,9 +11,7 @@ public interface ISkillService {
     public void agregarSkill(Skill newSkill);
     public void borrarSkill(Long idSkill);
     public Skill buscarSkill(Long idSkill);
-    public void editarSkillNombre(Long idSkill,
-                             
-                             String nuevoNombreSkill );
+    public void editarSkill(Skill skill );
    
            
 }

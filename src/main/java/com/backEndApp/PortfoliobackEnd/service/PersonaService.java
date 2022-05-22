@@ -36,67 +36,13 @@ public class PersonaService implements IPersonaService{
 
  
 
-    @Override
-    public void editPersonaNombre(Long idPersona, String nuevoNombre) {
-     Persona perso = persoRepo.getById(idPersona);
-        perso.setNombre(nuevoNombre);
-      
-        persoRepo.save(perso);    
     
-    }
 
     @Override
-    public void editPersonaApellido(Long idPersona, String nuevoApellido) {
-     
-     Persona perso = persoRepo.getById(idPersona);
-        perso.setApellido(nuevoApellido);
-      
-        persoRepo.save(perso);
-    }
-
-   
-
-    @Override
-    public void editPersonaNacimiento(Long idPersona, Date nuevoNacimiento) {
-    Persona perso = persoRepo.getById(idPersona);
-        perso.setNacimiento(nuevoNacimiento);
-      
-        persoRepo.save(perso); }
-
-    @Override
-    public void editPersonaFoto(Long idPersona, String nuevaFotoUrl) {
-    Persona perso = persoRepo.getById(idPersona);
-        perso.setFotoUrl(nuevaFotoUrl);
-      
-        persoRepo.save(perso); }
-
-    @Override
-    public void editPersonaImg(Long idPersona, String nuevaImgHeaderUrl) {
-    Persona perso = persoRepo.getById(idPersona);
-        perso.setImgHeaderUrl(nuevaImgHeaderUrl);
-      
-        persoRepo.save(perso); }
-
-    @Override
-    public void editPersonaAcercaTexto(Long idPersona, String nuevoAcercaTexto) {
-       Persona perso = persoRepo.getById(idPersona);
-        perso.setAcercaTexto(nuevoAcercaTexto);
-      
-        persoRepo.save(perso);
-    }
-
-    @Override
-    public void editPersonaResidencia(Long idPersona, String nuevaResidencia) {
-         Persona perso=persoRepo.getById(idPersona);
-         perso.setResidencia(nuevaResidencia);
-         persoRepo.save(perso);
-    }
-
-    @Override
-    public void editPersonaUrlResidencia(Long idPersona, String nuevaUrlResidencia) {
-          Persona perso=persoRepo.getById(idPersona);
-          perso.setUrlResidencia(nuevaUrlResidencia);
-          persoRepo.save(perso);
+    public void editPersona( Persona per) {
+           
+        persoRepo.save(per);
+    
     }
 
 

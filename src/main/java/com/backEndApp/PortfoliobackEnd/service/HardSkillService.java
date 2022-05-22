@@ -42,20 +42,11 @@ public HardSkillRepository hardSkillRepo;
     }
 
     @Override
-    public void editarHardSkillPorcentaje(Long idHardSkill, Long nuevoPorcentaje) {
-  
-        HardSkill hS= hardSkillRepo.getById(idHardSkill);
-        hS.setPorcentajeHardSkill(idHardSkill);
-        hardSkillRepo.save(hS);
+    public void editarHardSkill(HardSkill hardSkill) {
+     hardSkillRepo.save(hardSkill);
     }
 
-    @Override
-    public void editarHardSkillTitulo(Long idHardSkill, String nuevoTitulo) {
-       HardSkill hS= hardSkillRepo.getById(idHardSkill);
-        hS.setNombreHardSkill(nuevoTitulo);
-        hardSkillRepo.save(hS);
-    }
-
+ 
     
     
 }

@@ -13,15 +13,8 @@ public interface IFormacionService {
     public Formacion buscarFormacion(Long idFormacion);
     
     
-     public void editarFormacionNombreTitulo(Long idFormacion,String nuevoNombreTitulo
+     public void editarFormacion(Formacion formacion
                                    );
-     public void editarFormacionNombreInstituto(Long idFormacion,String nuevoNombreInstituto
-                                   );
-     public void editarFormacionFechaInicio(Long idFormacion, Date nuevoFechaInicio
-                                   );
-     public void editarFormacionFechaFin(Long idFormacion,  Date nuevoFechaFin
-                                   );
-     public void editarFormacionFinalizado(Long idFormacion, Boolean nuevoFinalizado
-                                   );
+    
 
 }

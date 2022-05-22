@@ -38,50 +38,12 @@ public class FormacionService implements IFormacionService {
     }
 
     @Override
-    public void editarFormacionNombreTitulo(Long idFormacion, String nuevoNombreTitulo) {
-     Formacion forma= formaRepo.getById(idFormacion);
-        forma.setNombreTitulo(nuevoNombreTitulo);
-         formaRepo.save(forma);
-        ;
-     
-    }
-
-    /*
-     Experiencia expe=expeRepo.getById(idExperiencia);
-         expe.setTipoExperiencia(nuevoTipoExperiencia);
-         expeRepo.save(expe);
-    */
+    public void editarFormacion(Formacion formacion) {
+     formaRepo.save(formacion);
     
-    
-    
-    @Override
-    public void editarFormacionNombreInstituto(Long idFormacion, String nuevoNombreInstituto) {
-    Formacion forma= formaRepo.getById(idFormacion);
-        forma.setNombreInstituto(nuevoNombreInstituto);
-         formaRepo.save(forma); 
     }
 
-    @Override
-    public void editarFormacionFechaInicio(Long idFormacion, Date nuevoFechaInicio) {
-    Formacion forma= formaRepo.getById(idFormacion);
-        forma.setFechaInicio(nuevoFechaInicio);
-         formaRepo.save(forma);
-    }
-
-    @Override
-    public void editarFormacionFechaFin(Long idFormacion, Date nuevoFechaFin) {
-    Formacion forma= formaRepo.getById(idFormacion);
-        forma.setFechaFin(nuevoFechaFin);
-         formaRepo.save(forma);
-    }
-
-    @Override
-    public void editarFormacionFinalizado(Long idFormacion, Boolean nuevoFinalizado) {
-    Formacion forma= formaRepo.getById(idFormacion);
-        forma.setFinalizado(nuevoFinalizado);
-         formaRepo.save(forma);
-    }
-
+   
     
 
    

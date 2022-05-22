@@ -4,9 +4,9 @@
  */
 package com.backEndApp.PortfoliobackEnd.controller;
 
-import com.backEndApp.PortfoliobackEnd.model.AcercaPersona;
+
 import com.backEndApp.PortfoliobackEnd.model.Persona;
-import com.backEndApp.PortfoliobackEnd.service.IAcercaPersonaService;
+
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
 import java.util.Date;
 import java.util.List;
@@ -35,15 +35,15 @@ import org.springframework.web.bind.annotation.RestController;
       ////*********iPersona*****************/////
     @Autowired
     private IPersonaService iPersona;
-    @Autowired
-    private IAcercaPersonaService iAcerca;
+  
+
 
     @PostMapping("/new/persona")//Tambien crea tabla acerca persona
     public void agregarPersonas(@RequestBody Persona perso){
         iPersona.crearPersona(perso);
-        AcercaPersona acerP=new AcercaPersona();
-        acerP.setPersona(perso);
-        iAcerca.crearAcercaPersona(acerP);         
+        
+     
+             
         };
     
     @GetMapping("/ver/personas")
@@ -64,63 +64,19 @@ import org.springframework.web.bind.annotation.RestController;
      public Persona buscarPersona(@PathVariable Long idPersona){
       return iPersona.buscarPersona(idPersona);
      };
-     ///// el edit persona tiene algunos parametros funciona si se pasan los parametros sino erro ergo hay que hacerlo uno por uno 
-    
- 
-     @PutMapping("/persona/editar/{idPersona}/nombre")
-     public void editPersonaNombre(@PathVariable Long idPersona,@RequestParam ("nombre")String nuevoNombre){
-      iPersona.editPersonaNombre(idPersona, nuevoNombre);
+   
+     @PutMapping("/persona/editar/{idPersona}")
+     public void editPersonaNombre(@PathVariable Long idPersona,@RequestBody Persona perso){
+      iPersona.editPersona(perso);
         };
-    
-     @PutMapping("/persona/editar/{idPersona}/apellido")
-     public void editPersonaApellido(@PathVariable Long idPersona,@RequestParam ("apellido")String nuevoApellido){
-         iPersona.editPersonaApellido(idPersona, nuevoApellido);};
-    
-     @PutMapping("/persona/editar/{idPersona}/nac")
-     public void editPersonaNacimiento(@PathVariable Long idPersona,@RequestParam ("nacimiento")Date nuevoNacimiento){
-         iPersona.editPersonaNacimiento(idPersona, nuevoNacimiento);};
-    
-     @PutMapping("/persona/editar/{idPersona}/foto")
-     public void editPersonaFotoUrl(@PathVariable Long idPersona,@RequestParam ("fotoUrl")String nuevaFotoUrl){iPersona.editPersonaFoto(idPersona, nuevaFotoUrl);};
-    
-     @PutMapping("/persona/editar/{idPersona}/img")
-     public void editPersonaImgUrl(@PathVariable Long idPersona,@RequestParam ("imgUrl") String nuevaImgHeader){ 
-              iPersona.editPersonaImg(idPersona, nuevaImgHeader);};
-    @PutMapping("/persona/editar/{idPersona}/acercaTxt")
-     public void editPersonaAcercaTexto(@PathVariable Long idPersona,@RequestParam ("acercaTexto") String nuevoAcercaTexto){ 
-              iPersona.editPersonaImg(idPersona, nuevoAcercaTexto);};
-     
-     @PutMapping("/persona/editar/{idPersona}/residencia")
-     public void editPersonaResidencia(@PathVariable Long idPersona,@RequestParam ("residencia") String nuevaResidencia){ 
-              iPersona.editPersonaResidencia(idPersona, nuevaResidencia);};
-     
-     @PutMapping("/persona/editar/{idPersona}/urlResidencia")
-     public void editPersonaUrlResidencia(@PathVariable Long idPersona,@RequestParam ("urlResidencia") String nuevaUrlResidencia){ 
-              iPersona.editPersonaUrlResidencia(idPersona, nuevaUrlResidencia);};
-    
+      
 
   
      
-       //**********Acerca De******************////
    
-  
-  /*  ///No usar,se crea con creacion de usuario///
-@PostMapping("/persona/ver/{idPersona}/acercaPersona")
-     public void agregarAcerca(@PathVariable Long idPersona,
-                                @RequestBody AcercaPersona acerPer){
-         Persona persona=iPersona.buscarPersona(idPersona);
-         acerPer.setPersona(persona);
-         iAcerca.crearAcercaPersona(acerPer); };  */
-
    
      
     
-    @PostMapping("/persona/ver/{idPersona}/edit/AcercaPersona")
-     public void cambiarTextoAcerPers(@PathVariable Long idPersona,
-                                       @RequestParam("textoAcerca") String nuevoTextoAcerca){
-       
-         iAcerca.editarAcercaPersona((idPersona+1),  nuevoTextoAcerca);
-    
-     }
+  
  
  }

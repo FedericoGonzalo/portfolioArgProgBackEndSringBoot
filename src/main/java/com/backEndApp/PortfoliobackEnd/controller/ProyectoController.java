@@ -60,38 +60,14 @@ public class ProyectoController {
                return persoProyecto;
         
        };
-    
-    @PutMapping("/personas/ver/Proyecto/editNombre")
-    public void editProyectoNombre(@RequestParam("idProyecto")Long idProyecto
-                                   ,@RequestParam("nuevoNombre") String nuevoNombre){
-        iProyecto.editarProyectoNombre(idProyecto, nuevoNombre); 
-   
-    };
-     @PutMapping("/personas/ver/Proyecto/editFecha")
-    public void editProyectoFecha(@RequestParam("idProyecto")Long idProyecto,
-                                        @RequestParam("nuevaFecha")Date nuevaFecha){
-    iProyecto.editarProyectoFechaRealizacion(idProyecto, nuevaFecha); 
+    @PutMapping("/personas/ver/{idPersona}/listaProyectoEdit")
+    public void editarProyecto(@PathVariable Long idPersona, @RequestBody Proyecto proyecto){
+        proyecto.setPersona(iPersona.buscarPersona(idPersona));
+        iProyecto.editarProyecto(proyecto);
+               
     };
     
-    
-    @PutMapping("/personas/ver/Proyecto/editDescripcion")
-    public void editProyectoDescripcion(@RequestParam("idProyecto")Long idProyecto,
-                                        @RequestParam("nuevaDescripcion")String nuevaDescripcion){
-    iProyecto.editarProyectoDescripcion(idProyecto, nuevaDescripcion); 
-    };
-   
-    
-    @PutMapping("/personas/ver/Proyecto/editUrlProyecto")
-    public void editProyectoUrlProyecto(@RequestParam("idProyecto")Long idProyecto,
-                                        @RequestParam("nuevoUrlProyecto")String nuevaUrlProyecto){
-    iProyecto.editarProyectoUrlProyecto(idProyecto, nuevaUrlProyecto); 
-    
-    };
-    @PutMapping("/personas/ver/Proyecto/editUrlImagenProyecto")
-    public void editProyectoUrlImagenProyecto(@RequestParam("idProyecto")Long idProyecto,
-                                               @RequestParam("nuevoUrlImagenProyecto")String nuevaUrlImagenProyecto){
-    iProyecto.editarProyectoUrlImagenProyecto(idProyecto, nuevaUrlImagenProyecto); 
-    };
+  
     
     
     

@@ -8,11 +8,14 @@ import com.backEndApp.PortfoliobackEnd.model.HardSkill;
 import com.backEndApp.PortfoliobackEnd.model.Persona;
 import com.backEndApp.PortfoliobackEnd.service.IHardSkillService;
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,15 +37,10 @@ public class HardSkillController {
     @PostMapping("/persona/ver/{idPersona}/newHSkill")
     public void crearHSkill(@PathVariable Long idPersona,
                            
-                           @RequestParam("nombreSkill") String nombreSkill,
-                           @RequestParam("porcentajeSkill")Long porcentajeSkill
-                             ){
-    HardSkill nHSkill=new HardSkill();
-    nHSkill.setNombreHardSkill(nombreSkill);
-    nHSkill.setPorcentajeHardSkill(porcentajeSkill);
-    Persona persona=iPerso.buscarPersona(idPersona);
-    nHSkill.setPersona(persona);
-    iHSkill.agregarHardSkill(nHSkill);
+                           @RequestBody HardSkill hardSkill){
+    
+    hardSkill.setPersona(iPerso.buscarPersona(idPersona));
+    iHSkill.agregarHardSkill(hardSkill);
     
     };
     
@@ -51,16 +49,17 @@ public class HardSkillController {
          iHSkill.borrarHardSkill(idHardSkill);
          }; 
     
-    @PutMapping("/persona/ver/edit/nombreHSkill") 
-        public void editSkillNombre(@RequestParam("idHardSkill")Long idHardSkill,
-                               @RequestParam("newNombre")String newNombre ){
-            iHSkill.editarHardSkillTitulo(idHardSkill, newNombre);
+    @PutMapping("/persona/ver/{idPersona}/edit/nombreHSkill") 
+        public void editHardSkill(@PathVariable Long idPersona,
+                               @RequestBody HardSkill hardSkill ){
+           hardSkill.setPersona(iPerso.buscarPersona(idPersona));
+           iHSkill.editarHardSkill(hardSkill);
         };
-      @PutMapping("/persona/ver/edit/porcentajeHSkill") 
-       public void editSkillPorcentaje(@RequestParam("idHardSkill")Long idSkill, 
-                                      @RequestParam("newPorcentaje")Long nuevoPorcentaje ){
-       iHSkill.editarHardSkillPorcentaje(idSkill, nuevoPorcentaje);
-       }; 
-    
-    
+
+    @GetMapping("/persona/ver/{idPersona}/listahSkill")
+    public List<HardSkill> listaHardSkill(@PathVariable Long idPersona){
+           List <HardSkill> listaHardSkill=iPerso.buscarPersona(idPersona).getHardSkills();
+           
+   
+            return listaHardSkill;};
 }

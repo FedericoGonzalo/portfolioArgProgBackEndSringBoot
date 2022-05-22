@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,16 +42,13 @@ public class SkillController {
      @PostMapping("/persona/ver/{idPersona}/newSkill")
      public void crearSkill(@PathVariable Long idPersona,
                            
-                           @RequestParam("nombreSkill") String nombreSkill
+                           @RequestBody Skill skill
                            
                              ){
         
-         Skill newSkill=new Skill();
-         newSkill.setPersona(iPersona.buscarPersona(idPersona));
-       
-         newSkill.setNombreSkill(nombreSkill);
+        skill.setPersona(iPersona.buscarPersona(idPersona));
         
-         iSkill.agregarSkill(newSkill);
+         iSkill.agregarSkill(skill);
      };
       
       @DeleteMapping("/persona/ver/delSkill")
@@ -58,13 +56,14 @@ public class SkillController {
          iSkill.borrarSkill(idSkill);
          }; 
         
-        @PutMapping("/persona/ver/edit/nombreSkill") 
-        public void editSkillNombre(@RequestParam("idSkill")Long idSkill,
-                               @RequestParam("newNombre")String newNombre ){
-            iSkill.editarSkillNombre(idSkill, newNombre);
+        @PutMapping("/persona/ver/{idPersona}/editSkill") 
+        public void editSkill(@PathVariable Long idPersona,@RequestBody Skill skill ){
+           skill.setPersona(iPersona.buscarPersona(idPersona));
+           iSkill.editarSkill(skill);
+            
         };
       
-       //aca abajo prueba para mandar listas skill pero por tipo(hard,soft,language)
+      
      
        
        @GetMapping("/persona/ver/{idPersona}/listSkill")
@@ -74,7 +73,7 @@ public class SkillController {
            
    
             return listaSkill;};
-       //****mapeo raro
+     
     
       
     

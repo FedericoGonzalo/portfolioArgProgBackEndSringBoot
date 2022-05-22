@@ -36,39 +36,11 @@ public class ProyectoService implements IProyectoService{
     }
 
     @Override
-    public void editarProyectoNombre(Long idProyecto, String nuevoNombre) {
-      Proyecto proye=proyectRepo.getById(idProyecto);
-      proye.setNombre(nuevoNombre);
-      proyectRepo.save(proye);
+    public void editarProyecto(Proyecto proyecto) {
+     
+    proyectRepo.save(proyecto);
     }
 
-    @Override
-    public void editarProyectoFechaRealizacion(Long idProyecto, Date nuevoFecha) {
-    
-     Proyecto proye=proyectRepo.getById(idProyecto);
-      proye.setFechaRealizacion(nuevoFecha);
-      proyectRepo.save(proye);
-    }
-
-    @Override
-    public void editarProyectoDescripcion(Long idProyecto, String nuevaDescripcion) {
-    Proyecto proye=proyectRepo.getById(idProyecto);
-      proye.setDescripcion(nuevaDescripcion);
-      proyectRepo.save(proye);
-    }
-
-    @Override
-    public void editarProyectoUrlProyecto(Long idProyecto, String nuevaUrlProyecto) {
-  Proyecto proye=proyectRepo.getById(idProyecto);
-      proye.setUrlProyecto(nuevaUrlProyecto);
-      proyectRepo.save(proye);
-    
-    }
-
-    @Override
-    public void editarProyectoUrlImagenProyecto(Long idProyecto, String nuevaUrlImagenProyecto) {
-    Proyecto proye=proyectRepo.getById(idProyecto);
-      proye.setUrlImagenProyecto(nuevaUrlImagenProyecto);
-      proyectRepo.save(proye);}
+  
     
 }

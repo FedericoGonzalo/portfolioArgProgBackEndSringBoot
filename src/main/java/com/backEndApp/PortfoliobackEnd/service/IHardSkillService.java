@@ -11,12 +11,9 @@ public interface IHardSkillService {
     public void agregarHardSkill(HardSkill hardSkill);
     public void borrarHardSkill (Long idHardSkill);
     public HardSkill buscarHardSkill(Long idHardSkill);
-    
-    
-     public void editarHardSkillPorcentaje(Long idHardSkill,Long nuevoPorcentaje
+
+     public void editarHardSkill(HardSkill hardSkill
                                    );
-     public void editarHardSkillTitulo(Long idHardSkill,String nuevoTitulo
-                                   );
-    
+  
     
 }

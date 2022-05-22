@@ -33,16 +33,15 @@ public class SkillService implements ISkillService {
         
     }
 
-
-
     @Override
-    public void editarSkillNombre(Long idSkill, String nuevoNombreSkill) {
-    Skill eSkill=skillRepo.getById(idSkill);
-        
-        eSkill.setNombreSkill(nuevoNombreSkill);
-        skillRepo.save(eSkill);
+    public void editarSkill(Skill skill) {
+    skillRepo.save(skill);
     
-    };
+    }
+
+
+
+   
 
 }
     

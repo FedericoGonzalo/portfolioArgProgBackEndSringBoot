@@ -39,12 +39,9 @@ public class Persona {
     private String fotoUrl="https://i.postimg.cc/QCLS4sXd/585e4beacb11b227491c3399.png";
     private String imgHeaderUrl= "https://upload.wikimedia.org/wikipedia/commons/9/94/Abstract_blue_background7.jpg";
     private String acercaTexto="TEXTO ACERCA DEL USUARIO" ;
+    private String textoUsuario="TEXTO MAS EXTENSO";
   
-  
-   @OneToOne(mappedBy="persona",cascade=CascadeType.ALL )
-   @JoinColumn()
-    
-    private AcercaPersona acercaPersona;
+   
     
    
    @OneToMany(mappedBy="persona",orphanRemoval = true,cascade={CascadeType.PERSIST,CascadeType.REMOVE})
@@ -66,9 +63,7 @@ public class Persona {
    @OneToMany(mappedBy="persona",orphanRemoval = true,cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private List<Formacion> formaciones=new ArrayList<>();
    
-   @OneToMany(mappedBy="persona",orphanRemoval = true,cascade={CascadeType.PERSIST,CascadeType.REMOVE})
-    private List<RedSocial> redesSociales=new ArrayList<>();
-   
+ 
     
     
     public Persona(){
@@ -86,6 +81,8 @@ public class Persona {
                 String fotoUrl,
                 String imgHeaderUrl,
                   String acercaTexto,
+                  String textoUsuario,
+                  
                 String residencia,
                 String urlResidencia,
                 
@@ -95,8 +92,8 @@ public class Persona {
                   List<Skill> skills,
                   List<HardSkill> hardSkills,
                   List<Experiencia> experiencias,
-                  List<Formacion> formaciones,
-                  List<RedSocial> redesSociales
+                  List<Formacion> formaciones
+               
                    ){
         this.idPersona = idPersona;
         this.nombre= nombre;
@@ -107,6 +104,7 @@ public class Persona {
         this.fotoUrl=fotoUrl;
         this.imgHeaderUrl=imgHeaderUrl;
         this.acercaTexto=acercaTexto;
+        this.textoUsuario=textoUsuario;
         
       
         
@@ -115,7 +113,7 @@ public class Persona {
         this.hardSkills=hardSkills;
         this.experiencias=experiencias;
         this.formaciones=formaciones;
-        this.redesSociales=redesSociales;
+
         
      
     }
