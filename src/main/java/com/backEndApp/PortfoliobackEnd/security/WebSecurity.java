@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.backEndApp.PortfoliobackEnd.security;
 import com.backEndApp.PortfoliobackEnd.security.JWT.JwtEntryPoint;
 import com.backEndApp.PortfoliobackEnd.security.JWT.JwtTokenFilter;
@@ -10,26 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
 /**
  *
  * @author BASSTARD
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -67,17 +58,24 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
       
-      
-          http.csrf().disable();
-          http.sessionManagement().sessionCreationPolicy(STATELESS);
+         
+ 
+       http.cors()
+        
+       .and().csrf().disable() ;
+       
+        //  http.sessionManagement().sessionCreationPolicy(STATELESS);
           http.anonymous();
           http.authorizeHttpRequests().anyRequest().permitAll();
                   
                 
    
   
-        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+        //http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+
+
+    
     }
-   
+  
     
 }

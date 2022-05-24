@@ -12,6 +12,7 @@ import javax.persistence.Temporal;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity 
 @Getter
@@ -31,7 +32,7 @@ public class Experiencia {
     private Date fechaInicio;
    
    @Temporal(javax.persistence.TemporalType.DATE)
-  // @DateTimeFormat(pattern="yyyy-mm-dd")
+//  @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date fechaFin;
     
     

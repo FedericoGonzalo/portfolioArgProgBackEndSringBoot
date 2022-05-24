@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,10 +28,11 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author BASSTARD
  */
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
  @RestController
 
 @RequestMapping("/api/personas")
-@CrossOrigin(origins = "http://localhost:4200/")
+
  public class PersonaController{
     
       ////*********iPersona*****************/////
@@ -68,7 +70,17 @@ import org.springframework.web.bind.annotation.RestController;
    
      @PutMapping("/persona/editar/{idPersona}")
      public void editPersonaNombre(@PathVariable Long idPersona,@RequestBody Persona perso){
-      iPersona.editPersona(perso);
+         Persona sinMod=iPersona.buscarPersona(idPersona);
+     
+                sinMod.setNombre(perso.getNombre());   
+         sinMod.setApellido(perso.getApellido());
+         sinMod.setAcercaTexto(perso.getAcercaTexto());
+         sinMod.setTextoUsuario(perso.getTextoUsuario());
+         sinMod.setFotoUrl(perso.getFotoUrl());
+         sinMod.setImgHeaderUrl(perso.getImgHeaderUrl());
+         sinMod.setResidencia(perso.getResidencia());
+         sinMod.setUrlResidencia(perso.getUrlResidencia());
+       iPersona.editPersona(sinMod);
         };
       
 

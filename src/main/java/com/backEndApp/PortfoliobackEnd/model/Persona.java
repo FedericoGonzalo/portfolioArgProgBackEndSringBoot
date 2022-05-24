@@ -1,20 +1,13 @@
 package com.backEndApp.PortfoliobackEnd.model;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import lombok.Getter;
@@ -111,7 +104,7 @@ public class Persona {
         this.proyectos=proyectos;
         this.skills=skills;
         this.hardSkills=hardSkills;
-        this.experiencias=experiencias;
+       this.experiencias=experiencias;
         this.formaciones=formaciones;
 
         

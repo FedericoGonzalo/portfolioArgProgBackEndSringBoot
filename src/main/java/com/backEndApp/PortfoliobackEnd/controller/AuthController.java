@@ -36,10 +36,11 @@ import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.web.bind.annotation.CrossOrigin;
-
+import org.springframework.web.bind.annotation.RequestMethod;
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:4200")
+
 
 public class AuthController {
 
