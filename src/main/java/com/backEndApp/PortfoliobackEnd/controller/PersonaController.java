@@ -79,8 +79,12 @@ import org.springframework.web.bind.annotation.RestController;
          sinMod.setFotoUrl(perso.getFotoUrl());
          sinMod.setImgHeaderUrl(perso.getImgHeaderUrl());
          sinMod.setResidencia(perso.getResidencia());
+       
+         sinMod.setNacimiento(perso.getNacimiento());
          sinMod.setUrlResidencia(perso.getUrlResidencia());
-       iPersona.editPersona(sinMod);
+         
+         iPersona.editPersona(sinMod);
+       
         };
       
 
