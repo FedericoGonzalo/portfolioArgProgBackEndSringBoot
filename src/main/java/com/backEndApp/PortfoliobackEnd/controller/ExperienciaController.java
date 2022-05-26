@@ -46,7 +46,7 @@ public class ExperienciaController {
                                 @RequestBody Experiencia expe ){
  
       expe.setPersona(iPersona.buscarPersona(idPersona));
-       
+       expe.setLogoEmpresa("https://i.postimg.cc/2Shqwp02/pngwing-com.png");
         iExpe.agregarExperiencia(expe);
      };
      @GetMapping("/persona/ver/{idPersona}/listExperiencia")

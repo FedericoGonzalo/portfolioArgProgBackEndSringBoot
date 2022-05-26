@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,11 +27,15 @@ private Long idFormacion;
 private String nombreTitulo;
 private String nombreInstituto;
 
-@Temporal(javax.persistence.TemporalType.DATE)
-private Date fechaInicio;
+//@Temporal(javax.persistence.TemporalType.DATE)
+@Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy",timezone = "America/Argentina/Buenos_Aires")
+    private Date fechaInicio;
 
-@Temporal(javax.persistence.TemporalType.DATE)
-private Date fechaFin;
+//@Temporal(javax.persistence.TemporalType.DATE)
+ @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy",timezone = "America/Argentina/Buenos_Aires")
+    private Date fechaFin;
 private Boolean finalizado;//en workbench tinyint ojota
 
 

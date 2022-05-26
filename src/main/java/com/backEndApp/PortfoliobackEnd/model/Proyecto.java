@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +26,11 @@ public class Proyecto {
     private Long idProyecto;
     private String nombre;
    
-    @Temporal(javax.persistence.TemporalType.DATE)
+   // @Temporal(javax.persistence.TemporalType.DATE)
+  @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy",timezone = "America/Argentina/Buenos_Aires")
+  
+
     private Date fechaRealizacion;
     private String descripcion;
     private String urlProyecto;

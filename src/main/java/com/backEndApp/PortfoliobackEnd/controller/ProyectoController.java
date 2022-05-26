@@ -42,7 +42,7 @@ public class ProyectoController {
      @Autowired
     private IPersonaService iPersona;
      
-    @PostMapping("/personas/ver/{idPersona}/newProyecto")
+    @PostMapping("/persona/ver/{idPersona}/newProyecto")
     public void agregarProyecto(@PathVariable Long idPersona,
                            @RequestBody Proyecto nuevoProyecto){
         
@@ -50,12 +50,12 @@ public class ProyectoController {
        nuevoProyecto.setPersona(per);
         iProyecto.agregarProyecto(nuevoProyecto);
     }; 
-    @DeleteMapping("/personas/ver/delProyecto/{idProyecto}")
+    @DeleteMapping("/persona/ver/delProyecto/{idProyecto}")
     public void borrarProyecto(@PathVariable Long idProyecto){
     iProyecto.borrarProyecto(idProyecto);
     };
     
-    @GetMapping("/personas/ver/{idPersona}/listaProyecto")
+    @GetMapping("/persona/ver/{idPersona}/listaProyecto")
     @ResponseBody
     public List listaProyecto(@PathVariable Long idPersona){
           Persona per=iPersona.buscarPersona(idPersona);
@@ -63,7 +63,7 @@ public class ProyectoController {
                return persoProyecto;
         
        };
-    @PutMapping("/personas/ver/{idPersona}/listaProyectoEdit")
+    @PutMapping("/persona/ver/{idPersona}/listaProyectoEdit")
     public void editarProyecto(@PathVariable Long idPersona, @RequestBody Proyecto proyecto){
         proyecto.setPersona(iPersona.buscarPersona(idPersona));
         iProyecto.editarProyecto(proyecto);

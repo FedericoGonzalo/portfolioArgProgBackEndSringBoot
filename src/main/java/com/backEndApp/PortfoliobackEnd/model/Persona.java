@@ -1,4 +1,5 @@
 package com.backEndApp.PortfoliobackEnd.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 @Entity
@@ -27,7 +29,9 @@ public class Persona {
    
     
    
-    @Temporal(javax.persistence.TemporalType.DATE)
+   // @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy",timezone = "America/Argentina/Buenos_Aires")
     private Date nacimiento;
     private String fotoUrl="https://i.postimg.cc/QCLS4sXd/585e4beacb11b227491c3399.png";
     private String imgHeaderUrl= "https://upload.wikimedia.org/wikipedia/commons/9/94/Abstract_blue_background7.jpg";

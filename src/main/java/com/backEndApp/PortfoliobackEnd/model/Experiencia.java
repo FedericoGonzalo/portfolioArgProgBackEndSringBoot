@@ -1,4 +1,5 @@
 package com.backEndApp.PortfoliobackEnd.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,15 +27,19 @@ public class Experiencia {
     private String puesto;
     private String descripcion;
     private String empresa;
-    private String logoEmpresa="https://i.postimg.cc/2Shqwp02/pngwing-com.png";
+    private String logoEmpresa;
     
-    @Temporal(javax.persistence.TemporalType.DATE)
+   // @Temporal(javax.persistence.TemporalType.DATE)
   //  @DateTimeFormat(pattern="yyyy-mm-dd")
-    private Date fechaInicio;
+  @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy",timezone = "America/Argentina/Buenos_Aires")
+     private Date fechaInicio;
    
-   @Temporal(javax.persistence.TemporalType.DATE)
+ //  @Temporal(javax.persistence.TemporalType.DATE)
 //  @DateTimeFormat(pattern="yyyy-mm-dd")
-    private Date fechaFin;
+  @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy",timezone = "America/Argentina/Buenos_Aires")
+     private Date fechaFin;
     
     
   
