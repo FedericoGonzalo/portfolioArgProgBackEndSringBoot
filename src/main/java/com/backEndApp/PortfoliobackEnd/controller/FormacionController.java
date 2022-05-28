@@ -17,7 +17,6 @@ import com.backEndApp.PortfoliobackEnd.model.Persona;
 import com.backEndApp.PortfoliobackEnd.service.IFormacionService;
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
 
-import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,7 +28,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -78,7 +76,7 @@ public class FormacionController {
                return persoFormacion;
       };
 
-      @PutMapping("/persona/ver/{idPersona}/listFormacion")
+      @PutMapping("/persona/ver/{idPersona}/editFormacion")
       public void editarFormacion(@PathVariable Long idPersona,
                                    @RequestBody Formacion formacion){
          formacion.setPersona(iPersona.buscarPersona(idPersona));
