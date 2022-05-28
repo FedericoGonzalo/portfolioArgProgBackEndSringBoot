@@ -5,11 +5,13 @@
 package com.backEndApp.PortfoliobackEnd.controller;
 
 
+import com.backEndApp.PortfoliobackEnd.dto.PersonaDTO;
 import com.backEndApp.PortfoliobackEnd.model.Persona;
 
 import com.backEndApp.PortfoliobackEnd.service.IPersonaService;
-import java.util.Date;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,7 +22,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,7 +33,8 @@ import org.springframework.web.bind.annotation.RestController;
  @RestController
 
 @RequestMapping("/api/personas")
-
+@Getter
+@Setter
  public class PersonaController{
     
       ////*********iPersona*****************/////
@@ -64,8 +66,20 @@ import org.springframework.web.bind.annotation.RestController;
   
     @GetMapping("/persona/ver/{idPersona}")
      @ResponseBody
-     public Persona buscarPersona(@PathVariable Long idPersona){
-      return iPersona.buscarPersona(idPersona);
+     public PersonaDTO buscarPersona(@PathVariable Long idPersona){
+          Persona perso= iPersona.buscarPersona(idPersona);
+          PersonaDTO persoDTO=new PersonaDTO();
+          persoDTO.setIdPersona(perso.getIdPersona());
+          persoDTO.setNombre(perso.getNombre());
+          persoDTO.setApellido(perso.getApellido());
+          persoDTO.setResidencia(perso.getResidencia());
+          persoDTO.setUrlResidencia(perso.getUrlResidencia());
+           persoDTO.setNacimiento(perso.getNacimiento());
+            persoDTO.setFotoUrl(perso.getFotoUrl());
+             persoDTO.setImgHeaderUrl(perso.getImgHeaderUrl());
+              persoDTO.setAcercaTexto(perso.getAcercaTexto());
+               persoDTO.setTextoUsuario(perso.getTextoUsuario());
+         return persoDTO;
      };
    
      @PutMapping("/persona/editar/{idPersona}")
