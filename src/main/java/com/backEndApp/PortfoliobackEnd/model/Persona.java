@@ -27,7 +27,7 @@ public class Persona {
     private String residencia="Alguna Ciudad";
     private String urlResidencia="https://www.google.com/maps/@-34.6154234,-58.5733841,11z";
    
-    
+     
    
    // @Temporal(javax.persistence.TemporalType.DATE)
     @Temporal(TemporalType.DATE)
