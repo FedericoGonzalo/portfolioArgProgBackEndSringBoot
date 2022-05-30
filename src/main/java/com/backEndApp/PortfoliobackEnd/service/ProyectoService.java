@@ -3,7 +3,6 @@ package com.backEndApp.PortfoliobackEnd.service;
 
 import com.backEndApp.PortfoliobackEnd.model.Proyecto;
 import com.backEndApp.PortfoliobackEnd.repository.ProyectoRepository;
-import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
