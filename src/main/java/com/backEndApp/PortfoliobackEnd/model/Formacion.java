@@ -3,6 +3,7 @@ package com.backEndApp.PortfoliobackEnd.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,14 +29,14 @@ private String nombreTitulo;
 private String nombreInstituto;
 
 //@Temporal(javax.persistence.TemporalType.DATE)
-@Temporal(TemporalType.DATE)
+//@Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy",timezone = "America/Argentina/Buenos_Aires")
-    private Date fechaInicio;
+    private LocalDate fechaInicio;
 
 //@Temporal(javax.persistence.TemporalType.DATE)
- @Temporal(TemporalType.DATE)
+ //@Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy",timezone = "America/Argentina/Buenos_Aires")
-    private Date fechaFin;
+    private LocalDate fechaFin;
 private Boolean finalizado;//en workbench tinyint ojota
 
 
@@ -52,8 +53,8 @@ public Formacion(){};
 public Formacion(Long idFormacion,
                   String nombreTitulo,
                   String nombreInstituto,
-                   Date fechaInicio,
-                   Date fechaFin,
+                   LocalDate fechaInicio,
+                   LocalDate fechaFin,
                    Boolean finalizado,
                   
                    Persona persona){

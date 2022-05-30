@@ -1,6 +1,7 @@
 package com.backEndApp.PortfoliobackEnd.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,15 +32,15 @@ public class Experiencia {
     
    // @Temporal(javax.persistence.TemporalType.DATE)
   //  @DateTimeFormat(pattern="yyyy-mm-dd")
-  @Temporal(TemporalType.DATE)
+ // @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy",timezone = "America/Argentina/Buenos_Aires")
-     private Date fechaInicio;
+     private LocalDate fechaInicio;
    
  //  @Temporal(javax.persistence.TemporalType.DATE)
 //  @DateTimeFormat(pattern="yyyy-mm-dd")
-  @Temporal(TemporalType.DATE)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy",timezone = "America/Argentina/Buenos_Aires")
-     private Date fechaFin;
+ // @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+     private LocalDate fechaFin;
     
     
   
@@ -58,8 +59,8 @@ public class Experiencia {
                       String descripcion,
             String empresa, 
             String logoEmpresa,
-            Date fechaInicio,
-            Date fechaFin,
+            LocalDate fechaInicio,
+            LocalDate fechaFin,
         
             Persona persona){
     this.idExperiencia=idExperiencia;
