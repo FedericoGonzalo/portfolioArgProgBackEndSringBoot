@@ -22,7 +22,7 @@ import org.springframework.web.cors.CorsConfiguration;
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -67,10 +67,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
           http.authorizeHttpRequests().anyRequest().permitAll();
                   
                 
-   
+   http.cors();
   
-        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
-      // http.cors()
+    //    http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+      // 
         
        //.and().csrf().disable() ;
        
